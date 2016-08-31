@@ -20,7 +20,7 @@ return array(
 	'DB_HOST'               =>  '101.200.81.192', // 服务器地址
 	'DB_NAME'               =>  'php802',          // 数据库名
 	'DB_USER'               =>  'root',      // 用户名
-	'DB_PWD'                =>  'Jolly@#2009',          // 密码
+	'DB_PWD'                =>  '',          // 密码
 	'DB_PORT'               =>  '3306',        // 端口
 	'DB_PREFIX'             =>  't_',    // 数据库表前缀
 	'DB_CHARSET'			=>  'utf8',      // 数据库编码
