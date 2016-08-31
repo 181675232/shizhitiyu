@@ -1,0 +1,16 @@
+<div class="footer">
+	<div class="l_footer clearfix">
+		<img src="/Public/images/l_logo_b.png" alt="磅礴" title="磅礴" class="l_img left">
+		<div class="clearfix right">
+			<p class="l_p_1 clearfix right l_a_ho_e1b05f">
+			<volist name="about" id="vo">
+				<a href="/About/index/id/{$vo.id}" class="f_16 f_corfff left">{$vo.title}</a>
+		</volist>
+
+			</p>
+			<p class="l_p_2 clearfix right f_16">                
+				{$base_content | htmlspecialchars_decode} 
+			</p>
+		</div>
+	</div>
+</div>

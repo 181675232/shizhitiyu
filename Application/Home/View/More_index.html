@@ -1,0 +1,96 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>瀑布流简易实现--使用数据库</title>
+<style type="text/css">
+body {margin:40px auto; width:800px; font-size:12px; color:#666;}
+.item1{
+	border: 1px solid #D4D4D4;
+    color: red;
+    margin: 0 10px 10px 0;
+    padding: 10px;
+    position: relative;
+    width: 200px;
+}
+.loading-wrap{
+	bottom: 50px;
+	width: 100%;
+	height: 52px;
+	text-align: center;
+	display: none;
+}
+.loading {
+	padding: 10px 10px 10px 52px;
+	height: 32px;
+	line-height: 28px;
+	color: #FFF;
+	font-size: 20px;
+	border-radius: 5px;
+	background: 10px center rgba(0,0,0,.7);
+}
+.footer{
+	border: 2px solid #D4D4D4;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="/Public/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/Public/js/jquery.masonry.min.js"></script>
+<ul>
+<div id="container" class=" container">
+<volist name="list" id="vo">
+	<li class="item1" style="height:300px;">
+		瀑布流下来了
+		<input type="hidden" name="id" value="{$vo.id}"/>
+	</li>
+</volist>
+</div>
+</ul>
+<div id="loading" class="loading-wrap">
+	<span class="loading">加载中，请稍后...</span>
+</div>
+<div class="footer"><center>我是页脚</center></div>
+<script type="text/javascript">
+$(function(){
+    //执行瀑布流
+    var $container = $('#container');
+	  $container.masonry({
+	    itemSelector : '.item1',
+	    isAnimated: true
+	  });
+
+	var loading = $("#loading").data("on", false);
+	$(window).scroll(function(){
+		if(loading.data("on")) return;
+		if($(document).scrollTop() > 
+			$(document).height()-$(window).height()-$('.footer').height()){
+			//加载更多数据
+			loading.data("on", true).fadeIn();
+			$.get(
+				"{:U('More/getMore')}", 
+				{"last_id" : $("#container>li:last>input").val()},
+				function(data){
+					var html = "";
+					if($.isArray(data)){
+						for(i in data){
+							html += "<li class=\"item1\" style=\"height:300px;\">瀑布又流下来了";
+							html += "<input type=\"hidden\" name=\"id\" value=\""+data[i]['id']+"\"/></li>";
+						}
+						var $newElems = $(html).css({ opacity: 0 }).appendTo($container);
+						$newElems.imagesLoaded(function(){
+							$newElems.animate({ opacity: 1 });
+							$container.masonry( 'appended', $newElems, true ); 
+				        });
+				        loading.data("on", false);
+					}
+					loading.fadeOut();
+				},
+				"json"
+			);
+		}
+	});
+});
+</script>
+</body>
+</html>

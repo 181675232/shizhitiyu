@@ -1,0 +1,382 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <empty name="group_data.title_seo">
+<title>{$group_data.title}</title>
+<else /> 
+<title>{$group_data.title_seo}</title>
+</empty> 
+<meta name="keywords" content="{$group_data.keywords_seo}">
+<meta name="description" content="{$group_data.description_seo}">
+    
+    <link rel="stylesheet" href="/Public/css/css.css">
+    <link rel="stylesheet" href="/Public/css/l_style.css">
+    <link rel="stylesheet" href="/Public/css/b_css.css">
+    <script type="text/javascript" src="/Public/js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="/Public/js/scripts/jquery/Validform_v5.3.2_min.js"></script>
+	<script type="text/javascript" src="/Public/js/layout.js"></script>
+    <script src="/Public/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="/Public/js/l_style.js" type="text/javascript"></script>
+    <script src="/Public/js/b_js.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/Public/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/Public/js/jquery.masonry.min.js"></script>
+	
+<style type="text/css">
+.loading-wrap{
+	bottom: 50px;
+	width: 100%;
+	height: 52px;
+	text-align: center;
+	display: none;
+}
+.loading {
+	padding: 10px 10px 10px 52px;
+	height: 32px;
+	line-height: 28px;
+	color: #333;
+	font-size: 20px;
+	border-radius: 5px;
+	background: 10px center #fff;
+	text-align: center;
+}
+
+</style>
+</head>
+<body>
+    <!--************************头部*************************-->
+<include file="Common:header" />
+<!--************************头部end*************************-->
+    <div id="b_qy">
+        <div class="b_qy_tit">
+            <h2>{$group_data.title}</h2>
+             <h3>{$group_data.titles}</h3>
+              <p>{$group_data.slogan}</p>
+                        <ul class="clearfix w12 l_xw_list_d">
+                        <volist name="istop" id="val">
+                            <li>
+                            <a href="/common/news/id/{$val.id}" >
+                                <img src="{$val.simg}" height="147" width="381" alt="">
+                                </a>
+                                <a href="/common/news/id/{$val.id}" class="b_lsxq_r_lvshi_p1 clearfix">
+                                   {$val.title}
+                                </a>
+                                <a href="/common/news/id/{$val.id}" class="b_lsxq_r_lvshi_p2 color_7">
+                                     {$val.introduction}
+                                </a>
+                            <div class="l_fxpl clearfix right" style='margin-right: 84px;width: 278px;height: 10px; margin-top: -6px;'>
+							<p class="clearfix left">
+								<span class="l_span_k left f_corfff ">
+												<empty name="val.title_short">
+												{$val.tag_title|sub_str1=1,1}
+												<else /> 
+												{$val.title_short}
+												</empty> 
+								
+								</span>
+								<span class="left f_core9b55f">{$val.tag_title}</span>
+							
+							</p>
+							<ul class="l_ul l_ul_cur clearfix right">
+								<li class="position_re">
+									<a href="/common/news/id/{$val.id}" class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_pl.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_pl_.png" alt="">
+										({$val.count})
+									</a>
+								</li>
+								<li class="position_re">
+									<a class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_fh.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_fh_.png" alt="">	
+										({$val.share})
+									</a>
+									<!--分享  -->
+												<p class="clearfix position_ab " style="display:bake">
+												   <a title="分享到微信"           class=" l_wx left bor_l "  onclick='showToweixin("{$val.id}")' href="javascript:;"" ></a>
+												   	<a title="分享到新浪微博"    class="l_xl left bor_l " onclick='showToSina("{$val.id}","{$val.title}","http://www.pangbo.tv{$val.simg}","http://www.pangbo.tv")' href="javascript:;"></a>
+													   <a title="分享到腾讯微博" class="l_tx left bor_l " onclick='showToTencent("{$val.id}","{$val.title}","http://www.pangbo.tv{$val.simg}","http://www.pangbo.tv")' href="javascript:;"></a>
+													</p>
+									<!--分享  -->
+								</li>
+								<li class="position_re">
+									<a class="f_corc1c1c1" onclick="return upper('news',{$val.id})">
+										<img src="/Public/images/l_tb_dz.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_dz_.png" alt="">
+										(<span>{$val.upper}</span>)
+									</a>
+								</li>
+								
+								
+																 <if condition="$val.is_coll eq 1"> 
+   											<li class="position_re">
+												<a class="f_corc1c1c1" >
+													<img src="/Public/images/l_tb_xx.png" alt="" >
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+									<else/>
+											<li class="position_re">
+												<a class="f_corc1c1c1" onclick="return clollection({$val.id})">
+													<img src="/Public/images/l_tb_xx.png" alt="" class="position_ab">
+													<img src="/Public/images/l_tb_xx_.png" alt="">
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+
+								</if>
+								
+							</ul>
+						</div>
+                        </li>
+                    </volist>
+            </ul>
+        </div>
+        <!--  -->
+        <div class="b_qy_header" id="top">
+            <ul class="clearfix w12">
+             <li>{$group_data.title}</li>
+            <volist name="isred"  id="val">
+              <li <if condition='$val[id] eq $_GET[tag]'> class="b_qy_header_checked"</if>> <a href="?tag={$val.id}#top">{$val.title}</a></li>
+            </volist>
+            </ul>
+        </div>
+        <div class="b_qy_content clearfix w12" >
+            <div class="left b_qy_content_l">
+                <ul class="clearfix l_xw_list_d"  id="container">
+                
+                <volist name="news" id="val">
+                
+                    <li class="item">
+                    <a href="/common/news/id/{$val.id}">
+                        <img src="{$val.simg}" height="147" width="381" alt="" style="width:381px;height:147px;">
+                        </a>
+                        <a href="/common/news/id/{$val.id}" class="b_lsxq_r_lvshi_p1 clearfix">
+                            {$val.title}
+                        </a>
+                        <a href="/common/news/id/{$val.id}" class="b_lsxq_r_lvshi_p2 color_7">
+                           {$val.introduction}
+                        </a>
+
+                            <div class="l_fxpl clearfix right" style='margin-right: 84px;width: 278px;height: 10px; margin-top: -6px;'>
+							<p class="clearfix left">
+								<span class="l_span_k left f_corfff ">
+												<empty name="val.title_short">
+												{$val.tag_title|sub_str1=1,1}
+												<else /> 
+												{$val.title_short}
+												</empty> 
+								
+								</span>
+								<span class="left f_core9b55f">{$val.tag_title}</span>
+							
+							</p>
+							<ul class="l_ul l_ul_cur clearfix right">
+								<li class="position_re">
+									<a href="/common/news/id/{$val.id}" class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_pl.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_pl_.png" alt="">
+										({$val.count})
+									</a>
+								</li>
+								<li class="position_re">
+									<a  class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_fh.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_fh_.png" alt="">	
+										({$val.share})
+									</a>
+									<!--分享  -->
+												<p class="clearfix position_ab " style="display:bake">
+												   <a title="分享到微信"           class=" l_wx left bor_l "  onclick='showToweixin("{$val.id}")' href="javascript:;"" ></a>
+												   	<a title="分享到新浪微博"    class="l_xl left bor_l " onclick='showToSina("{$val.id}","{$val.title}","http://www.pangbo.tv{$val.simg}","http://www.pangbo.tv")' href="javascript:;"></a>
+													   <a title="分享到腾讯微博" class="l_tx left bor_l " onclick='showToTencent("{$val.id}","{$val.title}","http://www.pangbo.tv{$val.simg}","http://www.pangbo.tv")' href="javascript:;"></a>
+													</p>
+									<!--分享  -->
+								</li>
+								<li class="position_re">
+									<a class="f_corc1c1c1" onclick="return upper('news',{$val.id})">
+										<img src="/Public/images/l_tb_dz.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_dz_.png" alt="">
+										(<span>{$val.upper}</span>)
+									</a>
+								</li>
+								
+								
+																 <if condition="$val.is_coll eq 1"> 
+   											<li class="position_re">
+												<a class="f_corc1c1c1" >
+													<img src="/Public/images/l_tb_xx.png" alt="" >
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+									<else/>
+											<li class="position_re">
+												<a class="f_corc1c1c1" onclick="return clollection({$val.id})">
+													<img src="/Public/images/l_tb_xx.png" alt="" class="position_ab">
+													<img src="/Public/images/l_tb_xx_.png" alt="">
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+
+								</if>
+								
+							</ul>
+						</div>
+
+                </li>
+
+			</volist>
+</ul>
+<div id="loading" class="loading-wrap">
+	<span class="loading">加载中，请稍后...</span>
+</div>
+
+<div id="page" style="display: none;">1</div>
+<div id="tag" style="display: none;">
+<if condition="$Think.get.tag eq ''">0<else/>{$Think.get.tag}</if>
+</div>
+<div id="groupid" style="display: none;">{$group_data.id}
+</div>
+</div>
+<div class="right b_qy_content_r">
+    <!-- ************** -->
+    <div id="b_lsxq_r" class="left">
+        <div class="b_lsxq_r_lvshi">
+            <h2>
+                评 论
+            </h2>
+            <h3>
+            </h3>
+            <div>
+<!-- 广告                 <img src="/Public/images/qy_r1.jpg" height="125" width="329" alt="">
+                <p class="b_qy_content_r_tit">
+                    2015年，哪些单位和行业有进京指标？</p> -->
+                    <ul class="b_qy_content_r_ul1">
+                    <volist name="comment_data" id="vo">
+                        <li class="clearfix"><a class="left" href="/common/news/id/{$vo.id}">{$vo.title}</a>
+                            <div class="right">
+                                {$vo.comment_count}条
+                            </div>
+                        </li>
+                        </volist>
+                    </ul>
+                </div>
+              
+                  <!--广告  -->
+				<notempty name="advert[2][img]">
+							<notempty name="advert[2][url]">
+							<a href="{$advert[2][url]}">
+							</notempty> 
+							<img src="{$advert[2][img]}"  width="364px" height="139" alt="" class="b_lsxq_r_bt_img">	
+							<notempty name="advert[2][url]">
+							</a>
+							</notempty>
+				</notempty> 
+			     <!--广告  -->
+
+
+            </div>
+            <!-- 转发 -->
+            <div class="b_lsxq_r_lvshi">
+                <h2>
+                    转 发</h2>
+                    <h3>
+                    </h3>
+                    <div>
+                        <ul class="b_qy_content_r_ul2">
+                        <volist name="share_data" id="vo">
+                            <li class="clearfix"><span class="left">{$i}</span> <a class="left" href="/common/news/id/{$vo.id}">{$vo.title}</a>
+                                <div class="right">
+                                    {$vo.share}条
+                                </div>
+                            </li>
+    				 </volist>
+                        </ul>
+                    </div>
+     
+                  <!--广告  -->
+				<notempty name="advert[3][img]">
+							<notempty name="advert[3][url]">
+							<a href="{$advert[3][url]}">
+							</notempty> 
+							<img src="{$advert[3][img]}"  width="364px" height="139" alt="" class="b_lsxq_r_bt_img">	
+							<notempty name="advert[3][url]">
+							</a>
+							</notempty>
+				</notempty> 
+			     <!--广告  -->	
+
+                </div>
+                <!-- 点赞 -->
+                <div class="b_lsxq_r_lvshi">
+                    <h2>
+                        点 赞</h2>
+                        <h3>
+                        </h3>
+                        <div>
+                            <ul class="b_qy_content_r_ul2">
+                            <volist name="upper_data" id="vo">
+                                <li class="clearfix"><span class="left">{$i}</span> <a class="left" href="/common/news/id/{$vo.id}">{$vo.title}</a>
+                                    <div class="right">
+                                        {$vo.upper}条
+                                    </div>
+                                </li>
+                               </volist>
+                            </ul>
+                        </div>
+                     
+                  <!--广告  -->
+				<notempty name="advert[4][img]">
+							<notempty name="advert[4][url]">
+							<a href="{$advert[4][url]}">
+							</notempty> 
+							<img src="{$advert[4][img]}"  width="364px" height="139" alt="" class="b_lsxq_r_bt_img">	
+							<notempty name="advert[4][url]">
+							</a>
+							</notempty>
+				</notempty> 
+			     <!--广告  -->	
+
+
+                    </div>
+                    <!-- 收藏 -->
+                    <div class="b_lsxq_r_lvshi">
+                        <h2>
+                            收 藏
+                        </h2>
+                        <h3>
+                        </h3>
+                        <div>
+                            <ul class="b_qy_content_r_ul2">
+                            <volist name="clollection_data" id="vo">
+                                <li class="clearfix"><span class="left">{$i}</span> <a class="left" href="/common/news/id/{$vo.id}">{$vo.title}</a>
+                                    <div class="right">
+                                        {$vo.clollection}条
+                                    </div>
+                                </li>
+                              </volist>
+                            </ul>
+                        </div>
+                        
+                     <!--广告  -->
+				<notempty name="advert[5][img]">
+							<notempty name="advert[5][url]">
+							<a href="{$advert[5][url]}">
+							</notempty> 
+							<img src="{$advert[5][img]}"  width="364px" height="139" alt="" class="b_lsxq_r_bt_img">	
+							<notempty name="advert[5][url]">
+							</a>
+							</notempty>
+				</notempty> 
+			     <!--广告  -->	
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--************************底部*************************-->
+<include file="Common:footer" />
+
+</body>
+</html>

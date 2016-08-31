@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<!--IOS中Safari允许全屏浏览：-->
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<!--IOS中Safari顶端状态条样式：-->
+	<meta content="telephone=no" name="format-detection">
+	<title>中国自行车联赛</title>
+	<script type='text/javascript' src='/Public/wap/lib/zepto/zepto.min.js'></script>
+	<script type='text/javascript' src='/Public/wap/lib/swiper/js/swiper-3.3.1.jquery.min.js'></script>
+	<script type='text/javascript' src='/Public/wap/dist/js/JS.js'></script>
+	<link rel="stylesheet" href="/Public/wap/lib/css/css.css" type='text/css'>
+	<link rel="stylesheet" href="/Public/wap/lib/swiper/css/swiper-3.3.1.min.css" type='text/css'>
+	<link rel="stylesheet" href="/Public/wap/dist/css/style.css" type='text/css'>
+</head>
+<body class="bk222">
+	<header class="header">
+		<img src="/Public/wap/images/logo.png"  alt="" class="logo">
+	</header>
+	<!-- 内容 -->
+	<div class="banner">
+		<div class="swiper-container index-banner">
+		    <div class="swiper-wrapper">
+				<volist name="banner_data" id="val">
+		       	 <div class="swiper-slide"><a href="{$val.url}"><img src="{$val.simg}"  alt=""></a></div>
+				</volist>
+		    </div>
+		    <!-- 如果需要分页器 -->
+		    <div class="swiper-pagination"></div>
+		</div>
+	</div>
+	<div class="content index-content">
+		<div class="tubiao xrow text-center">
+			<div class="dib xcol">
+				<a href="baomingchaxun.html">
+					<span class='margin'><img src="/Public/wap/images/flage.png"  alt=""></span>
+					<p>报名查询</p>
+				</a>
+			</div>
+			<div class="dib xcol">
+				<a href="chengjichaxun.html">
+					<span  class='margin'><img src="/Public/wap/images/bike.png"  alt=""></span>
+					<p>成绩查询</p>
+				</a>
+			</div>
+			<div class="dib xcol">
+				<a href="jifenbang.html">
+					<span  class='margin'> <img src="/Public/wap/images/jifen.png"  alt=""></span>
+					<p>积分榜</p>
+				</a>
+			</div>
+		</div>
+		<div class="baoti xrow pos-r ">
+			<div class="xcol f20 pl10 lv">
+				<p>2016 赛事报名</p>
+			</div>
+			<div class="xcol f22 uppercase ju text-center">
+				<p>sign up</p>
+			</div>
+			<span class='cenetr block pos-a t0'></span>
+		</div>
+		<div class="bisaibaoming">
+			<div class="swiper-container baoming-banner">
+			    <div class="swiper-wrapper">
+					<volist name="group_data" id="val">
+						<div class="swiper-slide br5">
+							<div class="img top pos-r">
+								<img src="{$val.simg}"  style="" alt="">
+								<span class="pos-a block t0 text-center f12">报名</span>
+								<div class="txt pos-a b0">
+									<p class="f16">{$val.match_title}——{$val.title}</p>
+									<em class='xleft f12'>{$val.starttime|date="Y.m.d H.i",###} - {$val.endtime|date="Y.m.d H.i",###} </em>
+									<em class='xright f12'>{$val.title} </em>
+								</div>
+							</div>
+							<div class="baoming bottom bkfff text-center">
+								<p class="f12"><em class='f30'>85</em>/人报名</p>
+								<a href="/group/detail/id/{$val.id}.html" class="block bao  br5 margin">一键报名</a>
+							</div>
+						</div>
+					</volist>
+<!--					<div class="swiper-slide br5 end">
+			        	<div class="img top pos-r">
+			        		<img src="/Public/wap/images/bao-img.jpg"  alt="">
+			        		<span class="pos-a block t0 text-center f12">已结束</span>
+			        		<div class="txt pos-a b0">
+			        			<p class="f16">重庆·奉节天坑地缝站——决战天地，勇者争位</p>
+			        			<em class='xleft f12'>2016.5.30-2016.6.2 </em>
+			        			<em class='xright f12'>男子专业组 </em>
+			        		</div>
+			        	</div>
+			        	<div class="baoming bottom bkfff text-center">
+			        		<p class="f12"><em class='f30'>85</em>/人报名</p>
+			        		<a href="" class="block bao  br5 margin">查看成绩</a>
+			        	</div>
+
+			        </div>-->
+			    <!-- 如果需要分页器 -->
+			    <div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<div class="ti cfff">
+			<p class="f20">新闻公告<em class="f16 uppercase">/NEWS</em></p>
+		</div>
+		<div class="new">
+			<ul>
+				<volist name="news_data" id="val">
+					<li class="xrow">
+						<div class="img xcol">
+							<a href="/news/detail/id/{$val.id}.html">
+								<img src="{$val.simg}" alt="">
+							</a>
+						</div>
+						<div class="col txt">
+							<h3 class="fn f16"><a href="/news/detail/id/{$val.id}.html">{$val.title}</a></h3>
+							<em>{$val.addtime|date="Y-m-d",###}</em>
+						</div>
+					</li>
+				</volist>
+
+			</ul>
+		</div>
+		<div class="ti cfff">
+			<p class="f20">赞助单位<em class="f16 uppercase">/ sponsor</em></p>
+		</div>
+		<div class="zanzhu">
+			<ul class=" ">
+				<volist name="link_data" id="val">
+					<li class="dib">
+						<img src="{$val.simg}"  alt="">
+					</li>
+				</volist>
+			</ul>
+		</div>
+	</div>
+	<!-- 底部 -->
+	<footer class="footer">
+		<p class="f18 fb">Powered by Discuz! X3.2
+		<br>
+© 2001-2013 Comsenz Inc.</p>
+<p class="f14">GMT+8, 2016-7-29 07:47 , Processed in 0.102802 second(s), 15 queries </p>
+	</footer>
+
+
+</body>
+</html>

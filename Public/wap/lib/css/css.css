@@ -1,0 +1,334 @@
+/* 公共css */
+@charset "utf-8";
+/* CSS Document */
+/*init*/
+/* 清除内外边距 */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */ dl, dt, dd, ul, ol, li, /* list elements 列表元素 */ pre, /* text formatting elements 文本格式元素 */ fieldset, lengend, button, input, textarea, /* form elements 表单元素 */ th, td { /* table elements 表格元素 */
+  margin: 0;
+  padding: 0; outline:none;
+}
+a:focus { -moz-outline-style: none; } /* IE不支持 */
+
+a:focus { outline: none; } /*很多网站都会加的属性*/
+/* 设置默认字体 */
+body, button, input, select, textarea { /* for ie */
+  /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+    font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+}
+address, cite, dfn, em, var {
+  font-style: normal;
+} /* 将斜体扶正 */
+code, kbd, pre, samp, tt {
+  font-family: "Courier New", Courier, monospace;
+} /* 统一等宽字体 */
+small {
+  font-size: 12px;
+} /* 小于 12px 的中文很难阅读，让 small 正常化 */
+/* 重置列表元素 */
+ul, ol {
+  list-style: none;
+}
+/* 重置文本格式元素 */
+a {
+  text-decoration: none;
+}
+abbr[title], acronym[title] { /* 注：1.ie6 不支持 abbr; 2.这里用了属性选择符，ie6 下无效果 */
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+q:before, q:after {
+  content: '';
+}
+/* 重置表单元素 */
+legend {
+  color: #000;
+} /* for ie6 */
+fieldset, img {
+  border: none;
+} /* img 搭车：让链接里的 img 无边框 */
+/* 注：optgroup 无法扶正 */
+button, input, select, textarea {
+  font-size: 100%; /* 使得表单元素在 ie 下能继承字体大小 */
+}
+/* 重置表格元素 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* 重置 hr */
+hr {
+  border: none;
+  height: 1px;
+}
+/* 让非ie浏览器默认也显示垂直滚动条，防止因滚动条引起的闪烁 */
+html {
+  /*overflow-y: scroll;*/
+}
+/*清除float*/
+/* Clear Fix */
+.clearfix:after,.xrow:after {
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
+}
+.clearfix,.xrow {
+  display:inline-block;
+}
+/* Hide from IE Mac \*/
+.clearfix,.xrow {
+  display:block;
+}
+.clearfix,.xrow{ zoom:1;}
+/* End hide from IE Mac */
+/* end of clearfix */
+/*清除float_end*/
+/*init_end*/
+body{
+  line-height:26px;
+  color:#333;
+  font-family:"微软雅黑";
+  font-size:12px;
+  overflow-x:hidden;
+}
+.overflow{
+  overflow:hidden;
+}
+.xrow *[class*="xcol"]{
+  float: left;
+}
+*[class*="xcol"]{
+  display: inline-block;
+}
+.xcol-10{
+  width: 10%;
+}
+.xcol-15{
+  width: 15%;
+}
+.xcol-20{
+  width: 20%;
+}
+.xcol-25{
+  width: 25%;
+}
+.xcol-30{
+  width: 30%;
+}
+.xcol-33{
+  width: 33%;
+}
+.xcol-35{
+  width: 35%;
+}
+.xcol-40{
+  width: 40%;
+}
+.xcol-50{
+  width: 50%;
+}
+.xcol-60{
+  width: 60%;
+}
+.xcol-66{
+  width: 66.666%;
+}
+
+.xcol-70{
+  width: 70%;
+}
+.xcol-75{
+  width: 75%;
+}
+.xcol-80{
+  width: 80%;
+}
+.xcol-85{
+  width: 85%;
+}
+.xcol-90{
+  width: 90%;
+}
+.xcol-100{
+  width: 100%;
+}
+.xcol-offset-10{
+  margin-left: 10%;
+}
+.xcol-offset-15{
+  margin-left: 15%;
+}
+.xcol-offset-20{
+  margin-left: 20%;
+}
+.xcol-offset-30{
+  margin-left: 30%;
+}
+.xcol-offset-40{
+  margin-left: 40%;
+}
+.xcol-offset-50{
+  margin-left: 50%;
+}
+.xcol-offset-60{
+  margin-left: 60%;
+}
+.xcol-offset-70{
+  margin-left: 70%;
+}
+.xcol-offset-80{
+  margin-left: 80%;
+}
+.xcol-offset-90{
+  margin-left: 90%;
+}
+.xcol-offset-100{
+  margin-left: 100%;
+}
+.maxw1000{
+  max-width: 1000px;
+}
+.block-center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.block,.db{
+  display: block;
+}
+.dn{
+  display: none;
+}
+.dib{
+  display: inline-block;
+}
+.di{
+  display: inline;
+}
+.vh{
+  visibility: hidden;
+}
+.w1000{
+  width: 1000px;
+}
+.minw1000{
+  min-width: 1000px;
+}
+.w100{
+  width: 100%;
+}
+.h100{
+  height: 100%;
+}
+.wh100{
+  width: 100%;
+  height: 100%;
+}
+.pos-r{
+  position: relative;
+}
+.pos-a{
+  position: absolute;
+}
+.pos-f{
+  position: fixed;
+}
+.t0{
+  top: 0;
+}
+.l0{
+  left: 0;
+}
+.tl0{
+  top: 0;
+  left: 0;
+}
+.tr0{
+  top: 0;
+  right: 0;
+}
+.b0{
+  bottom: 0;
+}
+.xright{
+  float: right;
+}
+.xleft{
+  float: left;
+}
+.f12{
+  font-size: 12px;
+}
+.f24{
+  font-size: 24px;
+}.f22{
+  font-size: 22px;
+}
+.f14{
+  font-size: 14px;
+}
+.f16{
+  font-size: 16px;
+}
+.f18{
+  font-size: 18px;
+}
+.f20{
+  font-size: 20px;
+}
+.f30{
+  font-size: 30px;
+}
+.fb{
+  font-weight: bold;
+}
+.fn{
+  font-weight: normal;
+}
+.pl10{
+  padding-left: 10px;
+}
+.pr10{
+  padding-right: 10px;
+}
+.plr10{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.uppercase{
+  text-transform: uppercase;
+}
+.text-center{
+  text-align: center;
+}
+.text-right{
+  text-align: right;
+}
+.text-left{
+  text-align: left;
+}
+.f36{
+  font-size: 36px;
+  line-height: 36px;
+}
+.xrow{
+  display: flex;
+}
+.xcol{
+  flex:1;
+}
+/* 公共css结束 */
+.nav-ul{
+
+}
+.br3{
+      border-radius: 3px;
+}
+.fn{
+  font-weight: normal;
+  font-style: normal;
+}
+.bn{
+  background: none!important;
+}

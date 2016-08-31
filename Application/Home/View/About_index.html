@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>联系我们</title>
+    <link rel="stylesheet" href="/Public/css/css.css">
+    <link rel="stylesheet" href="/Public/css/b_css.css">
+    <link rel="stylesheet" href="/Public/css/l_style.css">
+    <script src="/Public/js/jquery-1.11.3.min.js" type="text/javascript" ></script>
+    <script src="/Public/js/b_js.js" type="text/javascript" ></script>
+    <style>
+
+        #b_lxwm_r> ul> li{display: none;}
+        #b_lxwm{padding-top: 20px}
+        #b_lxwm_r> ul li.b_lxwm_add_show{display: block;}
+    </style>
+    <script>
+        $(function(){
+            $('#b_lxwm_l ul li').click(function(){
+                $('#b_lxwm_r> ul> li').eq($(this).index()).addClass('b_lxwm_add_show').siblings().removeClass('b_lxwm_add_show');
+            })
+
+        })
+    </script>
+</head>
+<body>
+<include file="Common:header" />
+    <div id="b_lxwm">
+        <div class="clearfix w12">
+            <div class="left" id="b_lxwm_l">
+                <ul>
+                <volist name="about" id="val">
+                    <li <if condition=" $Think.get.id eq $val.id ">class="b_lxwm_li_checked back_trans" <else />class="back_trans"</if>>
+                        <img src="{$val.img}" height="496" width="500" alt="">
+                        <div class="b_lxwm_ul_li_d clearfix">
+                            <div></div>
+                            <h3 class="right">{$val.title}</h3>
+                            <h2 class="right">{$val.titles}</h2>
+                        </div>
+                    </li>
+                  </volist>
+                </ul>
+            </div>
+            <div class="left"  id="b_lxwm_r">
+                <ul>
+                <volist name="about" id="val">
+                    <li <if condition=" $Think.get.id eq $val.id ">class="b_lxwm_add_show" </if>>
+
+                        <div class="b_lxwm_r1">
+                            <p>{$val.content}
+                    </p>
+
+
+
+                </div>
+            </li>
+         </volist>
+</ul>
+
+</div>
+</div>
+</div>
+<include file="Common:footer" />
+</body>
+</html>

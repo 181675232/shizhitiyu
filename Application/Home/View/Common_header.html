@@ -1,0 +1,376 @@
+	<script type="text/javascript" src="/Public/js/check_home.js"></script>
+	<script type="text/javascript" src="/Public/js/scripts/swfupload/swfupload.js"></script>
+	<script type="text/javascript" src="/Public/js/scripts/swfupload/swfupload.handlers.js"></script>
+		<script type="text/javascript" src="/Public/js/jquery.masonry.min.js"></script>	
+	<script type="text/javascript">
+	    $(function () {
+			 //初始化上传控件
+	        $(".upload-img").each(function () {
+	            $(this).InitSWFUpload({ sendurl: "/Public/upload", flashurl: "/Public/js/scripts/swfupload/swfupload.swf" });
+	        });
+	        $(".attach-btn").click(function () {
+	            showAttachDialog();
+	        });
+
+	    });
+	</script>
+	      <style>
+#b_dl, #b_zc {
+    display: none;
+    opacity: 0;
+    filter:alpha(opacity=0);
+}
+
+    </style>
+  
+	
+<div class="header">
+<div class="l_header clearfix">
+	<div class="l_logo clearfix left">
+		<a href="/index.html" class="left"><img src="/Public/images/l_logo.png" alt="磅礴" title="磅礴"></a>
+		<p class="f_18 f_corfff left">创客立四极  巨贾破五洲</p>
+	</div>
+	<div class="l_div clearfix right">
+		<ul class="l_head_top l_ul l_ul_cur clearfix right l_a_ho_e1b05f">
+			<li class="position_re pos_lt">
+				<a href="javascript:void(0);" class="f_14 f_corfff">
+					<img src="/Public/images/l_tb_wh.png" alt="">
+					搜索
+				</a>
+				<div class="l_ss_div position_ab bor clearfix">
+					<img src="/Public/images/l_tb_zx.png" alt="" class="left">
+					<form action="" class="l_ss clearfix">
+						<input type="text" placeholder="搜索" class="left bor">
+						<a href="javascript:void(0);" class="right bor"></a>
+					</form>
+				</div>
+			</li>
+			
+			<li class="position_re pos_lt clearfix">
+			 <empty name="Think.session.user_id">
+				<a href="javascript:void(0);" class="l_an_dl f_14 f_corfff left">
+					
+					登录
+				</a>
+				<a href="javascript:void(0);" class="l_an_zc f_14 f_corfff left" style="margin-left:12px;">注册</a>
+			 </empty> 
+			</li>
+			
+			<li class="position_re pos_lt clearfix">
+		<notempty  name="Think.session.user_id">
+				<a href="/Member/" class="l_a_grzx f_14 f_corfff">
+					<!-- <img src="/Public/images/l_tp_grzx.jpg" alt="" class="bor"> -->
+					个人中心
+				</a>
+				<div class="l_grzx_div position_ab">   
+				<a href="/Member/" class="block w100 f_cor333333">个人主页</a>
+					<a href="/Member/publish/" class="block w100 f_cor333333">我的稿件</a>
+					<a href="/Member/comment/" class="block w100 f_cor333333">我的评论</a>
+					<a href="/Member/manuscript/" class="block w100 f_cor333333">投稿</a>
+					<a href="/Member/account/" class="block w100 f_cor333333">账户设置</a> 
+					<a href="/Public/logout" class="block w100 f_cor333333">退出</a>
+				</div>
+		</notempty>
+			</li>
+					
+ 			<li class="position_re pos_lt">
+				<a href="javascript:void(0);" class="f_14 f_corfff l_a_khd">
+					客户端
+				</a>
+				<div class="l_khd_div position_ab bor clearfix">
+					<img src="/Public/images/l_tb_zx.png" alt="" class="right l_img">
+					<ul class="l_ul clearfix">
+						<li>
+							<!-- <img src="/Public/images/l_tp_rwm_sjkhd.jpg" alt="" class="left"> -->
+							<p class="w100 f_14 f_ctr">IOS端<br/>等待更新</p>
+						</li>
+ 						<li>
+							<img src="/Public/images/android.png" alt="" class="left" width="75" height="75">
+							<p class="w100 f_14 f_ctr">Android端</p>
+						</li> 
+					</ul>
+				</div>
+			</li> 
+<!-- 			<li class="position_re pos_lt">
+				<a href="javascript:void(0);" class="f_14 f_corfff f_ctr l_a_sjvip">
+					升级vip
+				</a>
+			</li> -->
+		</ul>
+		<ul class="l_nav l_ul clearfix right">
+			<li class="l_a_ho_e1b05f position_re">
+				<a href="/" class="f_18 f_corfff">首页</a>
+			</li>
+			
+		<volist name="data" id="val">
+			<li class="l_a_ho_e1b05f position_re">
+			<if condition="$val.id eq '4' ">
+  				<img src="/Public/images/l_tb_jp.png" alt="" class="l_nav_li_img">
+			</if>
+				<a href="/{$val.controller}" class="f_18 f_corfff">{$val.title}</a>
+				<div class="l_a_ho_fff clearfix position_ab">
+				<volist name="val['tag']" id="tag">
+					<a href="/{$val.controller}/?tag={$tag.id}" class="f_16 left">{$tag.title}</a>
+				</volist>
+				</div>
+			</li>
+		 </volist>
+		 
+		 
+<!-- 		 			<li class="l_a_ho_e1b05f position_re">
+				<a class="f_18 f_corfff">
+					<img src="/Public/images/l_tb_ren.png" alt="" class="l_nav_li_img">
+					律师大数据
+				</a>
+				<div class="l_a_ho_fff clearfix position_ab">
+				<volist name="law" id="val">
+					<a class="f_16 left">{$val.title}</a>
+				</volist>
+				</div>
+			</li> -->
+		 
+ 			<li class="l_a_ho_e1b05f position_re">
+				<a href="/Lawyer" class="f_18 f_corfff">
+					<img src="/Public/images/l_tb_ren.png" alt="" class="l_nav_li_img">
+					律师大数据
+				</a>
+				<div class="l_a_ho_fff clearfix position_ab">
+				<volist name="law" id="val">
+					<a href="/Lawyer/law/tag/{$val.id}" class="f_16 left">{$val.title}</a>
+				</volist>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div id="b_zc">
+	<div>
+		<div class="b_zc_tit clearfix">
+			<div class="left b_zc_tit_l b_zc_tit_checked ">
+				注册个人账号
+			</div>
+			<div class="left b_zc_tit_r ">
+				注册企业账号
+			</div>
+		</div>
+		<div class="b_zc_content">
+			<ul>	
+
+				<!-- 个人注册 -->
+				<li class="b_zc_li_checked">
+				<form method="post"  action="/Public/register/" id="form1">
+					<div class="b_zc_input clearfix">
+						<input type="text" name="username"  id="username" value="请输入个人昵称"  placeholder=""   class="b_zc_input1 b_zc_input_a input_t">
+						<input type="password" name="password" id="password" value=""  placeholder="请输入6位以上密码"  class="b_zc_input2 b_zc_input_a input_t">
+						<input type="text" name="code"  id="code"     value="请输入图片验证码"  placeholder=""  class="b_zc_input3 b_zc_input_b input_t">
+						 <img src='/Public/scode' id="txtCode" name="txtCode" class="right b_zc_yan" width="90" height="40" border='0' onclick="this.src='/Public/scode/'+Math.random();">
+						<input type="text" name="phone" id="phone" value="请输入您的手机号码"  placeholder=""    class="b_zc_input4 b_zc_input_b input_t">
+						<input type="button" id="div1" value="获取验证码" onclick="getSecond()" class="right b_zc_sj_yanzheng">
+						<input type="button" id="div2" style="display:none"  class="right b_zc_sj_yanzheng">
+						<input type="text" value="请输入短信验证码" name="phone_code" id="phone_code" placeholder=""  class="b_zc_input5 b_zc_input_a input_t">
+						<input type="text" name="name" id="name" value="您的姓名"  placeholder=""  class="b_zc_input6 b_zc_input_a input_t">
+					</div>
+					<div class="b_zc_zc color_3">
+						<div class="b_zc_sex clearfix">
+							<p class="left b_zc_sex_l">
+								您的性别：
+							</p>
+							<ul class="left b_zc_sex_r clearfix">
+								<li>
+									<input type="radio" checked="checked" name="zc_sex" value="1">
+									<em class="b_zc_sex_checked"></em>
+									<span>先生</span>
+								</li>
+								<li>
+									<input type="radio" name="zc_sex" value="2">
+									<em></em>
+									<span>女士</span>
+								</li>
+							</ul>
+						</div>
+						<div class="b_zc_yiyuedu">
+							<span class="b_zc_yiyuedu_check"></span>
+							我已阅读并同意<em>《磅礴新闻客户协议》</em>
+						</div>
+						<input type="hidden" name="type" value="1">
+						<input type="Submit" id="btnSubmit" class="b_zc_lj" onclick="return manager()" value="立即注册">
+					</div>
+					<div class="b_dl_dsanfang clearfix font_14 color_7 clearfix">
+						<p class="b_dl_sanfang_tit left">使用第三方合作账号登录</p>
+						<a href="#" class="left b_dl_sanfang_l">使用微信账号登录</a>
+						<a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101294127&redirect_uri=http://www.pangbo.tv/public/login_qq/state/test?display=pc" class="right b_dl_sanfang_r">使用QQ账号登录</a>
+					
+					</div>
+					</form>
+				</li>
+				
+				<!-- 注册 -->
+				<li class="">
+				<form method="post"  action="/Public/register/" id="form2">
+					<div class="b_zc_input clearfix">
+						<input type="text" id="username1" name="username" value="请输入企业昵称（5字以内）" class="b_zc_input1 b_zc_input_a input_t">
+						<input type="password" id="password1" name="password" value=""  placeholder="请输入6位以上密码"   class="b_zc_input2 b_zc_input_a input_t">
+						<input type="text" id="code1" name="code" value="请输入图片验证码" class="b_zc_input3 b_zc_input_b input_t">
+						<img src='/Public/scode' id="txtCode1" name="txtCode" class="right b_zc_yan" width="90" height="40" border='0' onclick="this.src='/public/scode/'+Math.random();">
+						<input type="text" id="phone1" name="phone" value="请输入管理员的手机号码" class="b_zc_input4 b_zc_input_b input_t">
+						<input type="button" id="div3" value="获取验证码" onclick="getSecond1()" class="right b_zc_sj_yanzheng">
+						<input type="button" id="div4" style="display:none"  class="right b_zc_sj_yanzheng">
+						<input type="text" id="phone_code1" name="phone_code" value="请输入短信验证码" class="b_zc_input5 b_zc_input_a input_t">
+						<input type="text" id="name1"  name="name" value="请填写企业全称（须与组织机构代码名称一致）" class="b_zc_input6 b_zc_input_a input_t">
+					</div>
+					<div class="b_zc_zc color_3 b_zc_zc1">
+						<div class="b_zc_upload clearfix">
+							<div class="left b_zc_upload_l">
+								<div style="" class="upload-box upload-img"></div>
+								<img src="/Public/upfile/wutu.jpg" class="upload-img" style="width: 91px;height: 91px;border-radius: 8px;" />
+								<input type="hidden" id="txtImgUrl" name="img" Class="input normal upload-path" />
+								<div>
+								</div>
+							</div>
+							<div class="left b_zc_upload_r">
+								<p class="b_zc_upload_r_p1">请上传企业组织机构代码副本</p>
+								<p class="b_zc_upload_r_p2">请确认企业全称与组织机构代码一致，否则将注册失败</p>
+							</div>
+						</div>
+						<div class="b_zc_yiyuedu b_zc_yiyuedu1">
+							<span class="b_zc_yiyuedu_check"></span>
+							我已阅读并同意<em>《磅礴新闻客户协议》</em>
+						</div>
+						<input type="hidden" name="type" value="2">
+						<input type="Submit" id="btnSubmit1" class="b_zc_lj" onclick="return manager1()" value="立即注册">
+					</div>
+				</form>
+				</li>
+			</ul>
+
+		</div>
+		
+	</div>
+</div>
+<div id="b_dl">
+<form method="post" action="/Public/login/" id="form3">
+	<div class="b_dl_tit">登录<em></em></div>
+	<div class="b_dl_content">
+		<div class="b_dl_input_d">
+			<!-- <p class="b_dl_input_type">请选择您要登录的账户类型</p> -->
+
+			<input type="text" name="phone"  id="phone3" class="b_dl_input b_dl_input1" value="请输入手机号码">
+			<input type="password" name="password" id="password3" class="b_dl_input b_dl_input2" placeholder="请输入密码"  >
+			<div class="b_dl_input_type_d">
+				<p>企业登录</p>
+				<p>个人登录</p>
+			</div>
+		</div>
+		<div class="b_dl_input_bt clearfix">
+			<p class="left b_dl_input_bt_l">
+				<span class="b_dl_input_l_symbol"></span>
+				<em>下次自动登录</em>
+			</p>
+			<a href="#" class="right b_dl_input_bt_r">找回密码</a>
+			<input type="submit" onclick="return login()" class="b_dl_lijidenglu left" value="立即登录">
+		</div>
+		<div class="b_dl_dsanfang clearfix font_14 color_7 clearfix">
+			<p class="b_dl_sanfang_tit left">使用第三方合作账号登录</p>
+			<a href="#" class="left b_dl_sanfang_l">使用微信账号登录</a>
+			<a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101294127&redirect_uri=http://www.pangbo.tv/public/login_qq/state/test?display=pc" class="right b_dl_sanfang_r">使用QQ账号登录</a>
+			<div class="right">
+				还没有磅礴账号？<a href="javascript:void(0);"  class="l_an_zc ">马上注册</a>
+			</div>
+		</div>
+	</div>
+</form>
+</div>
+<div class="b_m"></div>
+
+<script type="text/javascript">
+	/*---------------搜索--------------*/
+	$('.l_head_top li').eq(0).mouseenter(function(){
+		$(this).find('a').addClass('l_active');
+		$(this).find('div').stop(true,true).show().animate({'width':'264px','height':'60px'},500);
+	});
+	$('.l_head_top li').eq(0).mouseleave(function(){
+		$(this).find('a').removeClass('l_active');
+		$(this).find('div').stop(true,true).animate({'width':'0px','height':'0px'},500).hide();
+	});
+	$('.l_head_top li').eq(0).find('input').click(function(){
+		$(this).parents('div').css('display','block');
+	});
+	/*---------------个人中心--------------*/
+	$('.l_head_top li').eq(2).mouseenter(function(){
+		$(this).find('a').addClass('l_active');
+		$(this).find('div').stop(true,true).show().animate({'width':'75px'},500);
+	});
+	$('.l_head_top li').eq(2).mouseleave(function(){
+		$(this).find('a').removeClass('l_active');
+		$(this).find('div').stop(true,true).animate({'width':'0px'},500).hide();
+	});
+	/*---------------客户端--------------*/
+	$('.l_head_top li').eq(3).mouseenter(function(){
+		$(this).find('a').addClass('l_active');
+		$(this).find('div').stop(true,true).show().animate({'width':'234px','height':'140px'},500);
+	});
+	$('.l_head_top li').eq(3).mouseleave(function(){
+		$(this).find('a').removeClass('l_active');
+		$(this).find('div').stop(true,true).animate({'width':'0px','height':'0px'},500).hide();
+	});
+	/*---------------登录--------------*/
+	$('.l_an_dl').click(function(){
+		$().css({'display':'block','opacity':'1'});
+		$().css('display','block');
+	});
+	$('').click(function(){
+		$().css('display','none');
+		$().css('display','none');
+	});
+	/*---------------注册--------------*/
+	$('.l_an_zc').click(function(){
+		$().css({'display':'block','opacity':'1'});
+		$().css('display','block');
+	});
+	$('').click(function(){
+		$().css('display','none');
+		$().css('display','none');
+	});
+	/*---------------导航--------------*/
+	var sum_nav_;
+	$('.l_nav li').each(function(){
+		$(this).find('div.l_a_ho_fff').css({'width':40*$(this).find('div.l_a_ho_fff a').size()});
+		$(this).find('div.l_a_ho_fff').css({'left':-($(this).find('div.l_a_ho_fff').width()-$(this).width())/2});
+	});
+	sum_nav_=$('.l_nav li').size()-1;
+	$('.l_nav li').eq(sum_nav_).find('div.l_a_ho_fff').css({'left':-$('.l_nav li').eq(sum_nav_).find('div.l_a_ho_fff').width()+$('.l_nav li').eq(sum_nav_).width()});	
+	$('.l_nav li').hover(function(){
+		$(this).find('a.f_18').delay(200).addClass('l_active');
+		$(this).find('div.l_a_ho_fff').delay(200).slideDown();
+	});
+	$('.l_header>.l_div').mouseleave(function(){
+		$(this).find('a.f_18').delay(200).removeClass('l_active');
+		$(this).find('div.l_a_ho_fff').delay(200).slideUp();
+	});
+	$('.l_an_dl').click(function(){
+		$('#b_dl').css('opacity','1').fadeIn();
+		$('#b_zc').css('display','none');
+		$('.b_m').fadeIn();
+	})
+	$('.l_an_zc').click(function(){
+		$('#b_dl').css('display','none');
+		$('#b_zc').stop(true,true).css('opacity','1').fadeIn();
+		$('.b_m').stop(true,true).fadeIn();
+
+	})
+	$('.b_dl_tit em').click(function(){
+		$('#b_dl').css('display','none');
+		$('.b_m').css('display','none');
+	})
+	$('.b_m').click(function(){
+		$('#b_dl').css('display','none');
+		$('#b_zc').css('display','none');
+		$('.b_m').css('display','none');
+	})
+</script>
+<style>
+	#b_dl,#b_zc{display: none;}
+</style>
+
+</div>

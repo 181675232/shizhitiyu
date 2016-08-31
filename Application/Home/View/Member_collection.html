@@ -1,0 +1,828 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="/Public/css/css.css">
+    <link rel="stylesheet" href="/Public/css/l_style.css">
+    <link rel="stylesheet" href="/Public/css/b_css.css">
+    <script src="/Public/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="/Public/js/b_js.js" type="text/javascript"></script>
+</head>
+<body>
+    <!-- *****************底部************** -->
+<include file="Common:header" />
+    <!--  -->
+    <div id="b_zx" class="clearfix">
+		<include file="Member:memright" />
+                <!-- *******个人中心右******** -->
+                <div class="b_zx_r right">
+                    <div class="b_zx_r_nav font_14">
+                        <a class="b_zx_r_nav1 b_zx_r_checked" href="/Member/">我的</a> <span class="b_zx_r_nav2">
+                        我的稿件</span> <span class="b_zx_r_nav3" >投稿</span> <span class="b_zx_r_nav4">账户设置</span>
+                        <a class="b_zx_r_nav5" href="#">升级VIP</a> <a class="b_zx_r_nav6" href="#">退出</a>
+                    </div>
+                    <div class="b_zx_r_wd">
+                        <div class="b_zx_r_tit">
+                            <p class="color_f font_18">
+                                我的</p>
+                            </div>
+                            <div class="b_zx_r_wd_content clearfix">
+                                <div class="left font_16 color_f b_zx_r_wd_content_l">
+                                    <div class="b_zx_l_line">
+                                        <p></p>
+                                    </div>
+                                    <ul>
+                                        <a href="/Member/" style="color:#fff;">   <li ><span>交易<br />记录</span></li></a>
+                                      <a href="/Member/collection/" style="color:#fff;">     <li class="b_zx_r_tit_ed"><span>我的<br />收藏</span></li></a>
+                                       <a href="/Member/comment" style="color:#fff;"> <li><span>我的<br />评论</span></li></a>
+                                        </ul>
+                                    </div>
+                                    <div class="left b_zx_r_wd_content_r">
+                                                         
+                                                        <!-- 我的收藏 -->
+                                                        <div class="b_zx_r_sc_d clearfix b_zx_r_wd_content_r2" id="">
+                                                            <h2 class="clearfix"><span class="right">管理我的收藏</span></h2>
+                                                            <ul class="b_zx_r_sc"  id="container1">
+                                                            <volist name="collection"  id="val">
+                                                                <li class="clearfix item">
+                                                                <a href="/common/news/id/{$val.newid}" style="color:#000">
+                                                                    <img src="{$val.simg}"  height="54" width="140" alt="" class="left">
+                                                                    <p class="b_zx_r_sc_p1 left">{$val.title}</p>
+                                                                    <p class="b_zx_r_sc_p2 left">{$val.addtime|date="Y-m-d",###}</p>
+                                                                </a>
+                                                                <p class="b_zx_r_sc_p3 left" onclick="return mdelete({$val.id},'clollection')">删除</p>
+                                                                </li>
+         													</volist>
+                                                            </ul>
+
+                                                            <div class="b_zx_r_wd_more clearfix">
+                                                                <p class="right" onclick="return collection_ajax()"  id="collection"> 加载更多</p>
+                                                            </div>
+                                                        </div>
+                                                      <div id="page" style="display: none;">1</div>
+ 
+                                                </div>
+                                            </div>
+                                        </div>
+                                     <!--    <div class="b_zx_r_tg clearfix">
+                                            <div class="b_zx_r_tit clearfix">
+                                                <p class="color_f font_18 left">
+                                                    我的稿件</p>
+                                                    <span class="left">初级用户每天发布文章限量1篇，若有需求请 <em>升级VIP</em>用户，我们将提供更多资源，为您服务</span>
+                                                </div>
+                                                <div class="left font_16 color_f b_zx_r_wd_content_l">
+                                                 <div class="b_zx_l_line">
+                                                    <p></p>
+                                                </div>
+                                                <ul>
+                                                    <li class="b_zx_r_tit_ed_r"><span>交易
+                                                        <br>
+                                                        记录 </span></li>
+                                                        <li><span>已发表 </span></li>
+                                                        <li><span>审核中 </span></li>
+                                                        <li><span>已退稿 </span></li>
+                                                        <li><span>草稿箱 </span></li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="b_zx_r_tg_content_r left">
+                                                    我要发稿
+                                                    <div class="b_zx_r_tg_content_r1">
+                                                        <div class="b_zx_r_tg_r_tit">
+                                                            <span class="b_zx_r_tg_r_tit_p1">投稿 </span><span class="b_zx_r_tg_r_tit_p2">升级VIP
+                                                        </span><span class="b_zx_r_tg_r_bianji font_14">编辑> </span>
+                                                    </div>
+                                                    <div class="b_zx_r_tg_bianji_d">
+                                                        <div class="b_zx_tougao_tiaojian">
+
+                                                            <img src="images/zx_gougao_close.png"  alt=""class="b_zx_tougao_close">
+                                                            <h2>请完善您的个人信息，方能投稿</h2>
+                                                            <div class="clearfix">
+                                                                <input type="button" value="去完善信息" class="b_zx_tougao_wanshan left">
+                                                                <input type="button" value="取消" class="b_zx_tougao_cancel left">
+                                                            </div>
+                                                        </div>
+                                                        <div class="b_zx_r_tg_bianji_d1 font_14">
+                                                            <p>
+                                                                1.我们每年将发放不少于1000万元的稿酬给界面作者，界面为推送到首页的稿件支付500至5000元的稿酬。决定稿酬和额外奖励的因素包括是否独家供稿、编辑部评定以及用户和数据反馈等；界面编辑部保留计算稿酬、支付等条款的更改权和解释权。</p>
+                                                                <p>
+                                                                    2. 我们希望收到的文章是：重大商业事件独到的分析或评论；对宏观、金融领域具有前瞻价值的文章；有一手采访的独家商业新闻（欢迎专业财经记者为我们撰稿）；与本人工作有关的值得被分享的内容；十分独特的排行榜；图片报道；原创的足够幽默的内容。一般情况下，文章的字数请保持在1000到2000字之间。</p>
+                                                                    <p>
+                                                                        3.我们不建议你发送的文章：没有一手信息或独家评论的重大新闻报道；带有攻击性或侵犯他人隐私的文章；软文或带有关键词营销的文章。更详细的要求请见<a href="#">《 投稿须知》</a></p>
+                                                                    </div>
+                                                                    <div class="b_zx_r_tg_bianji_d2">
+                                                                        <div class="b_zx_tg_biaoti">
+                                                                            <p class="font_18">
+                                                                                <em>*</em> 标题
+                                                                            </p>
+                                                                            <input type="text" value="标题限制52字符">
+                                                                        </div>
+                                                                        <div class="b_zx_tg_lanmu">
+                                                                            <p class="font_18">
+                                                                                <em>*</em> 栏目
+                                                                            </p>
+                                                                            <ul class="clearfix">
+                                                                                <li>
+                                                                                    <input type="radio" name="b_tg_radio">
+                                                                                    <em></em><span>JMedia</span> 
+                                                                                </li>
+                                                                                <li class="b_zx_tg_checked">
+                                                                                    <input type="radio" name="b_tg_radio" checked="true">
+                                                                                    <em></em><span>投资 </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <input type="radio" name="b_tg_radio">
+                                                                                    <em></em><span>科技</span> 
+                                                                                </li>
+                                                                                <li>
+                                                                                    <input type="radio" name="b_tg_radio">
+                                                                                    <em></em><span>万间</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <input type="radio" name="b_tg_radio">
+                                                                                    <em></em><span>商业</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <input type="radio" name="b_tg_radio">
+                                                                                    <em></em><span>歪楼</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <input type="radio" name="b_tg_radio">
+                                                                                    <em></em><span>体育</span> 
+                                                                                </li>
+                                                                                <li>
+                                                                                    <input type="radio" name="b_tg_radio">
+                                                                                    <em></em><span>瘾擎</span> 
+                                                                                </li>
+                                                                                <li>
+                                                                                    <input type="radio" name="b_tg_radio">
+                                                                                    <em></em><span>中国 </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <input type="radio" name="b_tg_radio">
+                                                                                    <em></em><span>娱乐</span> 
+                                                                                </li>
+                                                                                <li>
+                                                                                    <input type="radio" name="b_tg_radio">
+                                                                                    <em></em><span>天下</span> 
+                                                                                </li>
+                                                                                <li>
+                                                                                    <input type="radio" name="b_tg_radio">
+                                                                                    <em></em><span>时尚</span> 
+                                                                                </li>
+                                                                                <li>
+                                                                                    <input type="radio" name="b_tg_radio">
+                                                                                    <em></em><span>游戏</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <input type="radio" name="b_tg_radio">
+                                                                                    <em></em><span>市值</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <input type="radio" name="b_tg_radio">
+                                                                                    <em></em><span>旅行</span> 
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="b_zx_tg_neirong">
+                                                                            <p class="font_18">
+                                                                                <em>*</em> 内容</p>
+                                                                                <img src="images/zx_neirong.jpg" height="459" width="478" alt="" class="b_zx_rg_nr_input">
+                                                                            </div>
+                                                                            <div class="b_zx_td_liuyan">
+                                                                                <p>
+                                                                                    给编辑留言</p>
+                                                                                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                                                                                    <p class="b_tg_tishi">
+                                                                                        <em>提示</em> 默认署名为您的昵称</p>
+                                                                                        <ul class="clearfix">
+                                                                                            <li class="b_zx_tg_checked">
+                                                                                                <input type="radio" name="b_tg_type_radio" checked="true">
+                                                                                                <em></em><span>独家 （独家为磅礴供稿）</span> 
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <input type="radio" name="b_tg_type_radio">
+                                                                                                <em></em><span>首发 （两天之后再投稿到其他平台）</span> 
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <input type="radio" name="b_tg_type_radio">
+                                                                                                <em></em><span>非独家非首发 </span>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <input type="radio" name="b_tg_type_radio">
+                                                                                                <em></em><span>翻译稿</span> 
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                    <div class="b_zx_tg_bt">
+                                                                                        <input type="button" class="b_zx_tg_bt1" value="发送稿件">
+                                                                                        <input type="button" class="b_zx_tg_bt2" value="保存草稿">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        已发表
+                                                                        <div class="b_zx_r_tg_content_r2">
+                                                                            <ul>
+                                                                                <li class="clearfix">
+                                                                                    <div class="left b_zx_r_tg_r2_l">
+                                                                                        <img src="images/zx_yifabiao_1.jpg"  width="157" alt="">
+                                                                                    </div>
+                                                                                    <div class="left b_zx_r_tg_r2_r">
+                                                                                        <p class="b_zx_r_tg_p1">
+                                                                                            BAT战火烧至保险领域 百度也进军互联网保险了
+                                                                                        </p>
+                                                                                        <p class="b_zx_r_tg_p2 clearfix">
+
+                                                                                          <span>国内目前已经开业的互联网保险公司目前只有两家，包括众安保险和泰康在线财险公司。安联保险是... 
+                                                                                          </span>
+                                                                                          <span class="b_zx_r_tg_p3">
+                                                                                              2015-02-02  15:32
+                                                                                          </span>
+                                                                                      </p>
+
+                                                                                  </div>
+                                                                              </li>
+                                                                              <li class="clearfix">
+                                                                                <div class="left b_zx_r_tg_r2_l">
+                                                                                    <img src="images/zx_yifabiao_1.jpg"  width="157" alt="">
+                                                                                </div>
+                                                                                <div class="left b_zx_r_tg_r2_r">
+                                                                                    <p class="b_zx_r_tg_p1">
+                                                                                        BAT战火烧至保险领域 百度也进军互联网保险了
+                                                                                    </p>
+                                                                                    <p class="b_zx_r_tg_p2 clearfix">
+
+                                                                                      <span>国内目前已经开业的互联网保险公司目前只有两家，包括众安保险和泰康在线财险公司。安联保险是... 
+                                                                                      </span>
+                                                                                      <span class="b_zx_r_tg_p3">
+                                                                                          2015-02-02  15:32
+                                                                                      </span>
+                                                                                  </p>
+
+                                                                              </div>
+                                                                          </li>
+                                                                          <li class="clearfix">
+                                                                            <div class="left b_zx_r_tg_r2_l">
+                                                                                <img src="images/zx_yifabiao_1.jpg"  width="157" alt="">
+                                                                            </div>
+                                                                            <div class="left b_zx_r_tg_r2_r">
+                                                                                <p class="b_zx_r_tg_p1">
+                                                                                    BAT战火烧至保险领域 百度也进军互联网保险了
+                                                                                </p>
+                                                                                <p class="b_zx_r_tg_p2 clearfix">
+
+                                                                                  <span>国内目前已经开业的互联网保险公司目前只有两家，包括众安保险和泰康在线财险公司。安联保险是... 
+                                                                                  </span>
+                                                                                  <span class="b_zx_r_tg_p3">
+                                                                                      2015-02-02  15:32
+                                                                                  </span>
+                                                                              </p>
+
+                                                                          </div>
+                                                                      </li>
+                                                                      <li class="clearfix">
+                                                                        <div class="left b_zx_r_tg_r2_l">
+                                                                            <img src="images/zx_yifabiao_1.jpg"  width="157" alt="">
+                                                                        </div>
+                                                                        <div class="left b_zx_r_tg_r2_r">
+                                                                            <p class="b_zx_r_tg_p1">
+                                                                                BAT战火烧至保险领域 百度也进军互联网保险了
+                                                                            </p>
+                                                                            <p class="b_zx_r_tg_p2 clearfix">
+
+                                                                              <span>国内目前已经开业的互联网保险公司目前只有两家，包括众安保险和泰康在线财险公司。安联保险是... 
+                                                                              </span>
+                                                                              <span class="b_zx_r_tg_p3">
+                                                                                  2015-02-02  15:32
+                                                                              </span>
+                                                                          </p>
+
+                                                                      </div>
+                                                                  </li>
+                                                              </ul>
+                                                              <div class="b_zx_r_wd_more clearfix">
+                                                                <p class="right"> 加载更多</p>
+                                                            </div>
+                                                        </div>
+                                                        已退稿
+                                                        <div class="b_zx_r_tg_content_r3">
+                                                            <ul>
+                                                              <li class="clearfix">
+                                                                <div class="left b_zx_r_tg_r2_l">
+                                                                    <img src="images/zx_yifabiao_1.jpg"  width="157" alt="">
+                                                                </div>
+                                                                <div class="left b_zx_r_tg_r2_r">
+                                                                    <p class="b_zx_r_tg_p1">
+                                                                        BAT战火烧至保险领域 百度也进军互联网保险了
+                                                                        <span class="b_zx_r_tg_bj">编辑<em>></em></span>
+                                                                        <span class="b_zx_r_tg_bj_d">
+                                                                            <span class="b_zx_r_tg_bj_checked">编辑文章</span>
+                                                                            <span>删除文章</span>
+                                                                        </span>
+                                                                    </p>
+                                                                    <p class="b_zx_r_tg_p2 clearfix">
+
+                                                                      <span>国内目前已经开业的互联网保险公司目前只有两家，包括众安保险和泰康在线财险公司。安联保险是... 
+                                                                      </span>
+                                                                      <span class="b_zx_r_tg_p3">
+                                                                          2015-02-02  15:32
+                                                                      </span>
+                                                                  </p>
+
+                                                              </div>
+                                                              <div class="left b_zx_r_tg_r3_bt">
+                                                                  <p class="left">含有黑名单词汇</p>
+                                                                  <p class="left">含有黑名单词汇</p>
+                                                                  <p class="left">含有黑名单词汇</p>
+                                                                  <p class="left">含有黑名单词汇</p>
+                                                                  <p class="left">含有黑名单词汇</p>
+                                                                  <p class="left">含有黑名单词汇</p>
+                                                                  <p class="left">含有黑名单词汇</p>
+                                                                  <p class="left">含有黑名单词汇</p>
+                                                              </div>
+                                                          </li>
+                                                          <li class="clearfix">
+                                                            <div class="left b_zx_r_tg_r2_l">
+                                                                <img src="images/zx_yifabiao_1.jpg"  width="157" alt="">
+                                                            </div>
+                                                            <div class="left b_zx_r_tg_r2_r">
+                                                                <p class="b_zx_r_tg_p1">
+                                                                    BAT战火烧至保险领域 百度也进军互联网保险了
+                                                                    <span class="b_zx_r_tg_bj">编辑<em>></em></span>
+                                                                    <span class="b_zx_r_tg_bj_d">
+                                                                        <span class="b_zx_r_tg_bj_checked">编辑文章</span>
+                                                                        <span>删除文章</span>
+                                                                    </span>
+                                                                </p>
+                                                                <p class="b_zx_r_tg_p2 clearfix">
+
+                                                                  <span>国内目前已经开业的互联网保险公司目前只有两家，包括众安保险和泰康在线财险公司。安联保险是... 
+                                                                  </span>
+                                                                  <span class="b_zx_r_tg_p3">
+                                                                      2015-02-02  15:32
+                                                                  </span>
+                                                              </p>
+
+                                                          </div>
+                                                          <div class="left b_zx_r_tg_r3_bt">
+                                                              <p class="left">含有黑名单词汇</p>
+                                                              <p class="left">含有黑名单词汇</p>
+                                                              <p class="left">含有黑名单词汇</p>
+                                                              <p class="left">含有黑名单词汇</p>
+                                                              <p class="left">含有黑名单词汇</p>
+                                                              <p class="left">含有黑名单词汇</p>
+                                                              <p class="left">含有黑名单词汇</p>
+                                                              <p class="left">含有黑名单词汇</p>
+                                                          </div>
+                                                      </li>
+                                                  </ul>
+                                                  <div class="b_zx_r_wd_more clearfix">
+                                                    <p class="right"> 加载更多</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- 账户设置 -->
+                                 <!--    <div class="b_zx_sz">
+                                      如果不是vip；css中添加 .b_zx_sz_vip_no{display:none;}可隐藏
+                                      <div class="b_zx_sz_vip_no">
+                                          <p>您还不是VIP会员</p>
+                                          <h2>我要升级VIP</h2>
+                                      </div>
+                                      左导航
+                                      <div class="b_zx_sz_d_d">
+                                          <div class="b_zx_r_tit">
+                                            <p class="color_f font_18">
+                                                账户设置
+                                            </p>
+                                        </div>
+                                        <div class="b_zx_sz_d clearfix">
+                                          <div class="left font_16 color_f b_zx_r_wd_content_l">
+                                             <div class="b_zx_l_line">
+                                                <p></p>
+                                            </div>
+                                            <ul>
+                                                <li class="b_zx_r_tit_ed">
+                                                    <span>
+                                                     基本<br>
+                                                     信息
+                                                 </span>
+                                             </li>
+                                             <li class="b_zx_r_tit_ed_r">
+                                                <span>
+                                                 VIP<br>
+                                                 会员
+                                             </span>
+                                         </li>
+                                     </ul>
+                                 </div>
+
+                                 基本信息
+                                 <div class="b_zx_sz_info b_zx_sz_r left">
+                                    <table>
+                                        修改照片
+                                        <tr class="b_zx_sz_tx_top">
+                                         <td class="b_zx_td1">头像</td>
+                                         <td class="b_zx_td2"><img src="images/wz_pl_h.png" alt="" width="42px" height="41px"></td>
+                                         <td class="b_zx_td3">编辑></td>
+                                     </tr>
+                                     <tr class="b_zx_sz_tx">
+                                         <td colspan="3" >
+                                             <div class="clearfix">
+                                                <img src="images/zx_tx_d.png" height="83" width="84" alt="" class="left">
+                                                <input type="button" value="上传头像" class="left">
+                                                <p class="left">
+                                                    仅支持JPG、JPEG、GIF、PNG格式的图片文件，文件不能大于2MB
+                                                </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    修改基本信息
+                                    <tr class="b_zx_sz_ b_zx_zl_top">
+                                     <td class="b_zx_td1">基本资料</td>
+                                     <td class="b_zx_td2"><input type="text" value="老王发飙"  disabled="true"></td>
+                                     <td class="b_zx_td3">编辑></td>
+                                 </tr>
+                                 <tr class="b_zx_zl">
+                                     <td colspan="3" >
+                                         <div>
+                                             <div class="clearfix b_zx_zl_d1">
+                                               <div class="left b_zx_zl_d_l">
+                                                   昵称
+                                               </div>
+                                               <div class="left b_zx_zl_d_r">
+                                                   老王发飙
+                                               </div>
+                                           </div>
+                                           <div class="clearfix b_zx_zl_d2">
+                                               <div class="left b_zx_zl_d_l">
+                                                   简介
+                                               </div>
+                                               <div class="left b_zx_zl_d_r">
+                                                 <textarea name="" id="" cols="30" rows="10"></textarea>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </td>
+                             </tr>
+                             修改密码
+                             <tr class="b_zx_mm_top">
+                                 <td class="b_zx_td1">密码</td>
+                                 <td class="b_zx_td2"><input type="password" value="111111" disabled="true"></td>
+                                 <td class="b_zx_td3">编辑></td>
+                             </tr>
+                             <tr class="b_zx_mm">
+                                 <td colspan="3" >
+                                     <div>
+                                         <p>
+                                             <label for="b_zx_pw1">旧密码</label>
+                                             <input type="password" id="b_zx_pw1" class="b_zx_pw">
+                                         </p>
+                                         <p>
+                                             <label for="b_zx_pw2" >新密码</label>
+                                             <input type="password" id="b_zx_pw2" class="b_zx_pw">
+                                         </p> 
+                                         <p>
+                                             <label for="b_zx_pw3">确认密码</label>
+                                             <input type="password" id="b_zx_pw3" class="b_zx_pw">
+                                         </p>
+                                     </div>
+                                     <input type="button" value="确认">
+                                 </td>
+                             </tr>
+                             修改邮箱
+                             <tr class="b_zx_yx_top">
+                                 <td class="b_zx_td1">绑定邮箱</td>
+                                 <td class="b_zx_td2"><input type="text" value="111111"  disabled="true" class="b_zx_td2_bianji"> </td>
+                                 <td class="b_zx_td3">编辑></td>
+                             </tr>
+                             <tr class="b_zx_yx">
+                                 <td colspan="3" >
+                                     <div>
+                                         <p>
+                                            <span>当前邮箱</span>
+                                            <span class="b_zx_yx_s2">无</span>
+                                        </p>
+                                        <p>
+                                            <span>邮箱</span>
+                                            <input type="text" placeholder="请输入您的邮箱账号" class="b_zx_yx_s2">
+                                        </p> 
+                                        <a href="#">前往邮箱验证</a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            修改手机号
+                            <tr class="b_zx_sz_sj_edit_top">
+                             <td class="b_zx_td1">绑定手机号</td>
+                             <td class="b_zx_td2"><input type="text" value="111111"  disabled="true"></td>
+                             <td class="b_zx_td3">编辑></td>
+                         </tr>
+                         <tr class="b_zx_sz_edit_sj">
+                             <td colspan="3" >
+                                 <div>
+                                     <p>
+                                         <span>当前手机号</span>
+                                         <span class="b_zx_yx_s2">无</span>
+                                     </p>
+                                     <p>
+                                        <span>手机</span>
+                                        <input type="text" placeholder="请输入您要绑定的手机号" class="b_zx_sz_sj_input">
+                                        <em class="b_zx_sz_edit_sj_em1">获取验证码</em>
+                                    </p> 
+                                    <p>
+                                        <span>验证码</span>
+                                        <input type="text" placeholder="请输入验证码" class="b_zx_sz_sj_input">
+                                        <em class="b_zx_sz_edit_sj_em2">确认绑定</em>
+                                    </p> 
+                                </div>
+
+                            </td>
+                        </tr>
+                        第三方
+                        <tr class="b_zx_vip_top">
+                         <td class="b_zx_td1">第三方账号绑定</td>
+                         <td class="b_zx_td2">
+
+                         </td>
+                         <td class="b_zx_td3">编辑></td>
+                     </tr>
+                     <tr class="b_zx_vip">
+                      <td colspan="3">
+                          <div class="clearfix">
+                              <div class="b_zx_vip_l left">
+                                  <img src="images/zx_w_d.jpg" height="53" width="58" alt="">
+                              </div>
+                              <div class="b_zx_vip_r left">
+                                  <a href="#">绑定微信</a>
+                              </div>
+                          </div>
+                          <div class="clearfix">
+
+                              <div class="b_zx_vip_l left">
+                                  <img src="images/zx_q_d.jpg" height="46" width="46" alt="">
+                              </div>
+                              <div class="b_zx_vip_r left">
+                                  <a href="#">绑定QQ</a>
+                              </div>
+                          </div>
+                      </td>
+                  </tr>
+              </table>
+          </div>
+          vip
+          <div class="b_zx_sz_r left b_zx_sz_vip">
+             <div class="b_zx_sz_sj clearfix">
+              <a href="vip_quanxian.html" class="b_zx_sz_sj2 right" target="_blank">查看VIP权限</a>
+              <a href="#" class="b_zx_sz_sj1 right">升级VIP</a>
+
+          </div>
+          <table>
+             <tr>
+                 <td class="b_zx_td1">头像</td>
+                 <td class="b_zx_td2"><img src="images/wz_pl_h.png" alt="" width="42px" height="41px"></td>
+                 <td class="b_zx_td3">编辑></td>
+             </tr>
+             <tr class="b_zx_sz_tx">
+                 <td colspan="3" >
+                     <div class="clearfix">
+                        <img src="images/zx_tx_d.png" height="83" width="84" alt="" class="left">
+                        <input type="button" value="上传头像" class="left">
+                        <p class="left">
+                            仅支持JPG、JPEG、GIF、PNG格式的图片文件，文件不能大于2MB
+                        </p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+             <td class="b_zx_td1">基本资料</td>
+             <td class="b_zx_td2"><input type="text" value="老王发飙"  disabled="true"></td>
+             <td class="b_zx_td3">编辑></td>
+         </tr>
+         <tr class="b_zx_zl">
+             <td colspan="3" >
+                 <div>
+                     <div class="clearfix b_zx_zl_d1">
+                       <div class="left b_zx_zl_d_l">
+                           昵称
+                       </div>
+                       <div class="left b_zx_zl_d_r">
+                           老王发飙
+                       </div>
+                   </div>
+                   <div class="clearfix b_zx_zl_d2">
+                       <div class="left b_zx_zl_d_l">
+                           简介
+                       </div>
+                       <div class="left b_zx_zl_d_r">
+                         <textarea name="" id="" cols="30" rows="10"></textarea>
+                     </div>
+                 </div>
+             </div>
+         </td>
+     </tr>
+     修改密码
+     <tr>
+         <td class="b_zx_td1">密码</td>
+         <td class="b_zx_td2"><input type="password" value="111111" disabled="true"></td>
+         <td class="b_zx_td3">编辑></td>
+     </tr>
+     <tr class="b_zx_mm">
+         <td colspan="3" >
+             <div>
+                 <p>
+                     <label for="b_zx_pw1">旧密码</label>
+                     <input type="password" id="b_zx_pw1" class="b_zx_pw">
+                 </p>
+                 <p>
+                     <label for="b_zx_pw2" >新密码</label>
+                     <input type="password" id="b_zx_pw2" class="b_zx_pw">
+                 </p> 
+                 <p>
+                     <label for="b_zx_pw3">确认密码</label>
+                     <input type="password" id="b_zx_pw3" class="b_zx_pw">
+                 </p>
+             </div>
+             <input type="button" value="确认">
+         </td>
+     </tr>
+     邮箱
+     <tr>
+         <td class="b_zx_td1">绑定邮箱</td>
+         <td class="b_zx_td2"><input type="text" value="111111"  disabled="true" class="b_zx_td2_bianji"> </td>
+         <td class="b_zx_td3">编辑></td>
+     </tr>
+     <tr class="b_zx_yx">
+         <td colspan="3" >
+             <div>
+                 <p>
+                    <span>当前邮箱</span>
+                    <span class="b_zx_yx_s2">无</span>
+                </p>
+                <p>
+                    <span>邮箱</span>
+                    <input type="text" placeholder="请输入您的邮箱账号" class="b_zx_yx_s2">
+                </p> 
+                <a href="#">前往邮箱验证</a>
+            </div>
+
+        </td>
+    </tr>
+    手机号
+    <tr>
+     <td class="b_zx_td1">绑定手机号</td>
+     <td class="b_zx_td2"><input type="text" value="111111"  disabled="true"></td>
+     <td class="b_zx_td3">编辑></td>
+ </tr>
+ <tr class="b_zx_sz_edit_sj">
+     <td colspan="3" >
+         <div>
+             <p>
+                 <span>当前手机号</span>
+                 <span class="b_zx_yx_s2">无</span>
+             </p>
+             <p>
+                <span>手机</span>
+                <input type="text" placeholder="请输入您要绑定的手机号" class="b_zx_sz_sj_input">
+                <em class="b_zx_sz_edit_sj_em1">获取验证码</em>
+            </p> 
+            <p>
+                <span>验证码</span>
+                <input type="text" placeholder="请输入验证码" class="b_zx_sz_sj_input">
+                <em class="b_zx_sz_edit_sj_em2">确认绑定</em>
+            </p> 
+        </div>
+
+    </td>
+</tr>
+第三方
+<tr>
+ <td class="b_zx_td1">第三方账号绑定</td>
+ <td class="b_zx_td2">
+     <img src="images/zx_weixin.png" height="20" width="22" alt="">
+     <img src="images/zx_qq.png"  alt="">
+ </td>
+ <td class="b_zx_td3">编辑></td>
+</tr>
+<tr class="b_zx_vip">
+  <td colspan="3">
+      <div class="clearfix">
+          <div class="b_zx_vip_l left">
+              <img src="images/zx_w_d.jpg" height="53" width="58" alt="">
+          </div>
+          <div class="b_zx_vip_r left">
+              <a href="#">绑定微信</a>
+          </div>
+      </div>
+      <div class="clearfix">
+
+          <div class="b_zx_vip_l left">
+              <img src="images/zx_q_d.jpg" height="46" width="46" alt="">
+          </div>
+          <div class="b_zx_vip_r left">
+              <a href="#">绑定QQ</a>
+          </div>
+      </div>
+  </td>
+</tr>
+vip续费
+<tr class="b_zx_vip_top_1">
+ <td class="b_zx_td1">vip会员状态</td>
+ <td class="b_zx_td2">年会员（剩余260天）</td>
+ <td class="b_zx_td3 b_zx_xufei">
+     续费>
+
+ </td>
+</tr>
+</table>
+<div class="b_zx_vip_xufei_d">
+ <div class="b_zx_vip_xufei_d1 clearfix">
+     <div class="left b_zx_vip_xufei_d1_l">
+         <h2>12个月<span>VIP会员</span></h2>
+         <p>￥60元</p>
+     </div>
+     <div class="left b_zx_vip_xufei_d1_r">
+         <p>如续费成功，您的会员权限将由会员到期日次日起计算时间，提前续费不会影响您的利益，请放心使用</p>
+         <input type="button" value="确认续费">
+     </div>
+ </div>
+ <div class="b_zx_vip_xufei_d2 clearfix">
+     <input type="text" value="请输入您的手机号" class="left b_zx_vip_xufei_d2_l">
+     <input type="button" value="开通到期短信提醒"  class="left b_zx_vip_xufei_d2_r">
+ </div>
+ <div class="b_zx_vip_xufei_d3 clearfix">
+    <p>到期短信提醒将于到期日前30天发送，若未续费将自动取消VIP权限</p>
+</div>
+</div>
+</div>
+<div class="b_zx_qy_xufei left">
+    <div class="b_zx_vip_xufei_d1 clearfix ">
+     <div class="left b_zx_vip_xufei_d1_l">
+         <h2>12个月<span>企业VIP会员</span></h2>
+         <p>￥60元</p>
+     </div>
+     <div class="left b_zx_vip_xufei_d1_r">
+         <p>如续费成功，您的会员权限将由会员到期日次日起计算时间，提前续费不会影响您的利益，请放心使用</p>
+         <input type="button" value="确认续费">
+     </div>
+ </div>
+</div>
+</div>
+</div> -->
+</div>
+
+<!--  -->
+</div>
+<!-- ************* -->
+</div>
+<!-- 交易记录放大 -->
+<div class="b_zx_jl_fd">
+    <div class="b_zx_jl_fd_m"></div>
+    <div class="b_zf_info">
+      <ul>
+          <li class="clearfix">
+              <div class="left b_zf_info_l b_zf_info_ll1"></div>
+              <div class="left b_zf_info_r">
+                <h2> 杨志峥<span class="font_18">（民事诉讼）</span></h2>  
+            </div>
+        </li>
+        <li class="clearfix">
+            <div class="left b_zf_info_l b_zf_info_ll2"></div>
+            <div class="left b_zf_info_r">
+              <span class="font_18">磅礴新闻民事诉讼资深律师</span>
+          </div>
+      </li>
+      <li class="clearfix">
+          <div class="left b_zf_info_l b_zf_info_ll3"></div>
+          <div class="left b_zf_info_r">
+            <span class="font_18">136612548546</span>
+        </div>
+    </li>
+    <li class="clearfix">
+      <div class="left b_zf_info_l b_zf_info_ll4"></div>
+      <div class="left b_zf_info_r ">
+       <span class="font_18">026-56845214</span>
+   </div>
+</li>
+<li class="clearfix">
+  <div class="left b_zf_info_l b_zf_info_ll5"></div>
+  <div class="left b_zf_info_r b_zf_info_r_no_border">
+   <span class="font_18">iwgl@vip.qq.com</span>
+</div>
+</li>
+<li class="clearfix">
+
+  <div class="right">
+   <span class="font_18 b_zf_fasong">点击发送邮件</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- *****************底部************** -->
+<include file="Common:footer" />
+</body>
+</html>
+ 

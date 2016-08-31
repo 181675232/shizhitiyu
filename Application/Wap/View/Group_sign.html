@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<!--IOS中Safari允许全屏浏览：-->
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<!--IOS中Safari顶端状态条样式：-->
+	<meta content="telephone=no" name="format-detection">
+	<title>中国自行车联赛</title>
+	<script type='text/javascript' src='/Public/wap/lib/zepto/zepto.min.js'></script>
+	<script type='text/javascript' src='/Public/wap/lib/swiper/js/swiper-3.3.1.jquery.min.js'></script>
+	<script type='text/javascript' src='/Public/wap/dist/js/JS.js'></script>
+	<link rel="stylesheet" href="/Public/wap/lib/css/css.css" type='text/css'>
+	<link rel="stylesheet" href="/Public/wap/lib/swiper/css/swiper-3.3.1.min.css" type='text/css'>
+	<link rel="stylesheet" href="/Public/wap/dist/css/style.css" type='text/css'>
+</head>
+<body class="bk222">
+<form id="form" method="post">
+	<div class="content er-content pic-down baoming">
+		<div class="top f18  c222 fb text-center">
+			<!--<p>中国自行车联赛</p>-->
+			<p>{$match_title}</p>
+		</div>
+		<div class="list p10" id="queren"> 
+			<div class="tr">
+				<div class="th f18 c333">比赛分组</div>
+				<div class="td f16 hide br5 bkfff pos-r">
+					<!--<span class="btn-arr pos-a"></span>-->
+					<p>{$title} ￥{$price}元</p>
+<!--					<p>男子专业组 ￥300元</p>
+					<p>男子专业组 ￥300元</p>-->
+				</div>
+			</div>
+<!--			<div class="tr">
+				<div class="th f18 c333">自定义收费项目</div>
+				<div class="td f16 hide br5 bkfff pos-r">
+					<span class="btn-arr pos-a"></span>
+					<p>男子专业组 ￥300元</p>
+					<p>男子专业组 ￥300元</p>
+					<p>男子专业组 ￥300元</p>
+					<p>男子专业组 ￥300元</p>
+				</div>
+			</div>-->
+		</div>
+		<ul class="txt">
+			<li class="xrow f16">
+				<div class="xcol mw20">活动时间</div>
+				<div class="xcol text-right">{$starttime|date="Y.m.d H:i",###} - {$endtime|date="m.d H:i",###}</div>
+			</li>
+			<li class="xrow f16">
+				<div class="xcol mw20">赛事项目</div>
+				<div class="xcol text-right  online">{$match_title}</div>
+			</li>
+			<li class="xrow f16">
+				<div class="xcol mw20">名额数量</div>
+				<div class="xcol text-right">{$number}名</div>
+			</li>
+			<li class="xrow f16">
+				<div class="xcol mw20">性别</div>
+				<div class="xcol text-right">
+					<if condition="$sex eq 0">不限</if>
+					<if condition="$sex eq 1">男</if>
+					<if condition="$sex eq 2">女</if>
+				</div>
+			</li>
+			<li class="xrow f16">
+				<div class="xcol mw20">出生日期</div>
+				<div class="xcol text-right">{$birth_star_time|date="Y.m.d H:i:s",###} <br> {$birth_end_time|date="Y.m.d H:i:s",###}</div>
+			</li>
+			<li class="xrow f16">
+				<div class="xcol mw20">比赛类型</div>
+				<div class="xcol text-right">
+					<if condition="$sort eq 1">个人</if>
+					<if condition="$sort eq 2">团队</if>
+				</div>
+			</li>
+			<li class="xrow f16">
+				<div class="xcol mw20">报名截止</div>
+				<div class="xcol text-right">{$sign_end_time|date="Y.m.d H:i:s",###}</div>
+			</li>
+		</ul>
+		<div class="xrow  text-center bottom">
+			<div class="xcol">
+				<div class="xright dib">
+					<em>396</em> <br>
+					<i class="iconfont icon-heart1">关注</i>	
+				</div>
+			</div>
+			<div class="xcol ">
+				<div class="xleft dib">
+					<em>162</em> <br>
+					<i class="iconfont icon-flag">已报</i>	
+				</div>
+			</div>
+		</div>
+		<input type="hidden" name="id" value="{$id}">
+		<input type="submit"  class="sub-com br5 margin text-center"  value="付款报名" >
+		<!--<a href="/pay/id" class="sub-com br5 margin text-center">付款报名</a>-->
+	</div>
+	</form>
+</body>
+</html>

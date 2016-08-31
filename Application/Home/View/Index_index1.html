@@ -1,0 +1,755 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>{$base_title}</title>
+	<meta name="keywords" content="{$base_keyword}">
+	<meta name="description" content="{$base_description}">
+	<script type="text/javascript" src="/Public/js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="/Public/js/b_js.js"></script>
+	<script type="text/javascript" src="/Public/js/l_style.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/Public/css/css.css">
+	<link rel="stylesheet" type="text/css" href="/Public/css/b_css.css">
+	<link rel="stylesheet" type="text/css" href="/Public/css/l_style.css">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<style>
+		.b_hot_ul_d{overflow: hidden;}
+		.b_hot_ul{width:860px;position: relative;height: 138px;
+		}
+		.b_hot_ul> li{position: absolute;top: 0;left: 0;display: none;width: 100%;}
+		.b_hot_ul> li.b_hot_li_checked{display: block;}
+	</style>
+	<meta property="qc:admins" content="17413767776016727646" />
+</head>
+<body>
+	<!--************************头部*************************-->
+<include file="Common:header" />
+
+	<!--************************内容*************************-->
+	<div class="l_content">
+		<div class="clearfix" style="padding:20px 0">
+			<div class="l_ban_hot left">
+				<div class="l_ban position_re">
+					<span class="l_an_ l_an_l position_ab"></span>
+					<span class="l_an_ l_an_r position_ab"></span>
+					<div class="l_rq">
+						<div class="l_rq_ clearfix">
+						<volist name="slide" id="val">
+							<a href="" class="left"><img src="{$val.simg}" style="width: 817px;height: 313px;" alt=""></a>
+							</volist>
+						</div>
+					</div>
+				</div>
+				<div class="l_hot clearfix position_re">
+					<p class="l_hot_ position_ab f_20 f_corfff f_ctr">HOT</p>
+					
+					<div class="b_hot_ul_d">
+						<ul class="b_hot_ul clearfix">
+						
+						<volist name="slide" id="val">
+							<li <if condition="$i eq 1">class="b_hot_li_checked"</if>>
+								<h3 class="f_28 f_cor000" ><a href="/common/news/id/{$val.id}" class="f_28 f_cor000" ">{$val.title}</a></h3>
+								<div class="l_div clearfix">
+									<p class="f_14 f_corf4f4f4 clearfix left">
+										<span class="left">
+										{$val.introduction}
+										</span>
+										<a href="/common/news/id/{$val.id}" class="f_14 f_core9b55f right">more></a>
+									</p>
+									<div class="l_fxpl right">
+										<p class="clearfix">
+											<span class="l_span_k left f_corfff ">{$val.tag_title|sub_str1=1,1}</span>
+											<span class="left f_core9b55f">{$val.tag_title}</span>
+											<span class="right f_cor999999">{$val.addtime|date="Y-m-d H:i",###}</span>
+										</p>
+										<ul class="l_ul l_ul_cur clearfix">
+											<li class="position_re">
+												<a href="/common/news/id/{$val.id}" class="f_corc1c1c1">
+													<img src="/Public/images/l_tb_pl.png" alt="" class="position_ab">
+													<img src="/Public/images/l_tb_pl_.png" alt="">
+													({$val.count})
+												</a>
+											</li>
+											<li class="position_re">
+												<a href="" class="f_corc1c1c1">
+													<img src="/Public/images/l_tb_fh.png" alt="" class="position_ab">
+													<img src="/Public/images/l_tb_fh_.png" alt="">	
+													({$val.share})
+												</a>
+<!-- 												<p class="clearfix position_ab">
+													<a href="javascript:void(0);" class="l_wx left bor_l"></a>
+													<a href="javascript:void(0);" class="l_xl left bor_l"></a>
+													<a href="javascript:void(0);" class="l_tx left bor_l"></a>
+												</p> -->
+											</li>
+											<li class="position_re">
+												<a  class="f_corc1c1c1" onclick="return upper('news',{$val.id})">
+												<img src="/Public/images/l_tb_dz.png" alt="" class="position_ab">
+													<img src="/Public/images/l_tb_dz_.png" alt="">
+													(<span>{$val.upper}</span>)
+												</a>
+											</li>
+											
+							  <if condition="$val.is_coll eq 1"> 
+   											<li class="position_re">
+												<a class="f_corc1c1c1" >
+													<img src="/Public/images/l_tb_xx.png" alt="" >
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+									<else/>
+											<li class="position_re">
+												<a class="f_corc1c1c1" onclick="return clollection({$val.id})">
+													<img src="/Public/images/l_tb_xx.png" alt="" class="position_ab">
+													<img src="/Public/images/l_tb_xx_.png" alt="">
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+
+								</if>
+
+											
+											
+											
+										</ul>
+									</div>
+								</div>	
+							</li>
+						</volist>
+						
+						</ul>
+					</div>
+					
+				</div>
+			</div>
+			<div class="l_sptel right">
+				<div class="l_sp">
+					<ul class="l_div_div l_ul clearfix position_re">
+					
+					<volist name="video" id="val" offset="0" length='1'>
+						<li class="l_active position_ab pos_lt">
+							<a href="/common/news/id/{$val.id}" class="block wh100">
+								<img src="/Public/images/l_tb_sp.png" alt="" class="position_ab">
+								<img src="{$val.simg}" alt="">
+								<div class="l_div clearfix">
+									<p class="f_14 f_corc1c1c1 left">{$val.title}</p>
+								</div>	
+							</a>
+						</li>
+					</volist>
+					</ul>
+					<ul class="l_div_list l_ul l_ul_cur clearfix">
+					<volist name="video" id="val" offset="0" length='4'>
+						<li>
+						<a href="/common/news/id/{$val.id}">
+							<img src="{$val.simg}" alt="">
+							</a>
+						</li>
+				</volist>
+
+					</ul>
+				</div>
+				<div class="l_tel clearfix">
+					<div class="left">
+						<img src="/Public/images/l_tb_dh.png" alt="">
+						<p class="f_18 f_corfff f_ctr">新闻热线</p>
+					</div>
+					<p class="l_p right f_28 f_corfff">{$base_tel}</p>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="l_left left">
+				<ul class="l_xw_list_d l_ul clearfix b_in_l">
+					<volist name="data_headlines" id="val" offset="0" length='10'>
+					<li class="bor_t clearfix">
+					<a href="/common/news/id/{$val.id}">
+						<img src="{$val.simg}" alt="" class="l_img">
+						</a>
+						<h3 class="f_24 f_cor000"><a href="/common/news/id/{$val.id}"  class="f_24 f_cor000">{$val.title}</a></h3>
+						<p class="f_12 f_cor999999 clearfix">
+							<span class="left">
+								{$val.introduction|sub_str=70}
+							</span>
+							<a href="/common/news/id/{$val.id}" class="right f_cor6091ce">more></a>
+						</p>
+						<div class="l_fxpl clearfix right">
+							<p class="clearfix left">
+								<span class="l_span_k left f_corfff ">{$val.tag_title|sub_str1=1,1}</span>
+								<span class="left f_core9b55f">{$val.tag_title}</span>
+							</p>
+							<ul class="l_ul l_ul_cur clearfix left">
+								<li class="position_re  clearfix">
+									<a href="/common/news/id/{$val.id}" class="f_corc1c1c1 ">
+										<img src="/Public/images/l_tb_pl.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_pl_.png" alt="">
+										({$val.count})
+									</a>
+								</li>
+								<li class="position_re clearfix">
+									<a href="" class="f_corc1c1c1">
+										<!-- <img src="images/l_tb_fh.png" alt="" class="position_ab"> -->
+										<img src="/Public/images/l_tb_fh_.png" alt="">	
+										({$val.share})
+									</a>
+									<p class="clearfix position_ab">
+										<a href="javascript:void(0);" class="l_wx left bor_l"></a>
+										<a href="javascript:void(0);" class="l_xl left bor_l"></a>
+										<a href="javascript:void(0);" class="l_tx left bor_l"></a>
+									</p>
+								</li>
+								<li class="position_re clearfix">
+									<a class="f_corc1c1c1" onclick="return upper('news',{$val.id})">
+										 <img src="/Public/images/l_tb_dz.png" alt=""   class="position_ab">
+										<img src="/Public/images/l_tb_dz_.png" alt="">
+										(<span>{$val.upper}</span>)
+									</a>
+								</li>
+								
+								 <if condition="$val.is_coll eq 1"> 
+   											<li class="position_re">
+												<a class="f_corc1c1c1" >
+													<img src="/Public/images/l_tb_xx.png" alt="" >
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+									<else/>
+											<li class="position_re">
+												<a class="f_corc1c1c1" onclick="return clollection({$val.id})">
+													<img src="/Public/images/l_tb_xx.png" alt="" class="position_ab">
+													<img src="/Public/images/l_tb_xx_.png" alt="">
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+
+								</if>
+
+							</ul>
+							<p class="clearfix right">
+								<span class="f_cor999999">{$val.addtime|date="Y-m-d H:i",###}</span>
+							</p>
+						</div>
+					</li>
+				</volist>
+				
+				</ul>
+			</div>
+			<div class="l_right right clearfix b_in_r_d">
+			<!--1左  -->
+				<ul class="l_xw_list_d l_xw_list_x l_ul clearfix b_in_r1">
+				<volist name="data_creative" id="val" offset="0" length='3'>
+					<li class="bor_t clearfix">
+					<a href="/common/news/id/{$val.id}"  >
+						<img src="{$val.simg}" alt="" class="l_img">
+						</a>
+						
+						<h3 class="f_18 f_cor000" style="height: 60px;"><a href="/common/news/id/{$val.id}"  class="f_18 f_cor000">{$val.title}</a></h3>
+						<p class="f_12 f_cor999999 clearfix">
+							<span class="left" style="height: 90px;">
+								{$val.introduction|sub_str=65}
+							</span>
+							<a href="/common/news/id/{$val.id}" class="right f_cor6091ce">more></a>
+						</p>
+						<div class="l_fxpl clearfix right">
+							<p class="clearfix left">
+								<span class="l_span_k left f_corfff ">{$val.tag_title|sub_str1=1,1}</span>
+								<span class="left f_core9b55f">{$val.tag_title}</span>
+								<span class="right f_cor999999">{$val.addtime|date="Y-m-d H:i",###}</span>
+							</p>
+							<ul class="l_ul l_ul_cur clearfix right">
+								<li class="position_re">
+									<a href="/common/news/id/{$val.id}" class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_pl.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_pl_.png" alt="">
+										({$val.count})
+									</a>
+								</li>
+								<li class="position_re">
+									<a href="" class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_fh.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_fh_.png" alt="">	
+										({$val.share})
+									</a>
+									<p class="clearfix position_ab">
+										<a href="javascript:void(0);" class="l_wx left bor_l"></a>
+										<a href="javascript:void(0);" class="l_xl left bor_l"></a>
+										<a href="javascript:void(0);" class="l_tx left bor_l"></a>
+									</p>
+								</li>
+								<li class="position_re">
+									<a class="f_corc1c1c1" onclick="return upper('news',{$val.id})">
+										<img src="/Public/images/l_tb_dz.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_dz_.png" alt="">
+										(<span>{$val.upper}</span>)
+									</a>
+								</li>
+								
+								
+																 <if condition="$val.is_coll eq 1"> 
+   											<li class="position_re">
+												<a class="f_corc1c1c1" >
+													<img src="/Public/images/l_tb_xx.png" alt="" >
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+									<else/>
+											<li class="position_re">
+												<a class="f_corc1c1c1" onclick="return clollection({$val.id})">
+													<img src="/Public/images/l_tb_xx.png" alt="" class="position_ab">
+													<img src="/Public/images/l_tb_xx_.png" alt="">
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+
+								</if>
+								
+							</ul>
+						</div>
+					</li>
+					</volist>
+				</ul>
+				
+				
+				<!--  1 右 -->
+				<ul class="l_xw_list_d l_xw_list_x l_ul clearfix b_in_r2">
+				<volist name="data_feelings" id="val" offset="0" length='3'>
+					<li class="bor_t clearfix">
+					<a href="/common/news/id/{$val.id}"  >
+						<img src="{$val.simg}" alt="" class="l_img">
+						</a>
+						
+						<h3 class="f_18 f_cor000" style="height: 60px;"><a href="/common/news/id/{$val.id}"  class="f_18 f_cor000">{$val.title}</a></h3>
+						<p class="f_12 f_cor999999 clearfix">
+							<span class="left" style="height: 90px;">
+								{$val.introduction|sub_str=65}
+							</span>
+							<a href="/common/news/id/{$val.id}" class="right f_cor6091ce">more></a>
+						</p>
+						<div class="l_fxpl clearfix right">
+							<p class="clearfix left">
+								<span class="l_span_k left f_corfff ">{$val.tag_title|sub_str1=1,1}</span>
+								<span class="left f_core9b55f">{$val.tag_title}</span>
+								<span class="right f_cor999999">{$val.addtime|date="Y-m-d H:i",###}</span>
+							</p>
+							<ul class="l_ul l_ul_cur clearfix right">
+								<li class="position_re">
+									<a href="/common/news/id/{$val.id}" class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_pl.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_pl_.png" alt="">
+										({$val.count})
+									</a>
+								</li>
+								<li class="position_re">
+									<a href="" class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_fh.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_fh_.png" alt="">	
+										({$val.share})
+									</a>
+									<p class="clearfix position_ab">
+										<a href="javascript:void(0);" class="l_wx left bor_l"></a>
+										<a href="javascript:void(0);" class="l_xl left bor_l"></a>
+										<a href="javascript:void(0);" class="l_tx left bor_l"></a>
+									</p>
+								</li>
+								<li class="position_re">
+									<a class="f_corc1c1c1" onclick="return upper('news',{$val.id})">
+										<img src="/Public/images/l_tb_dz.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_dz_.png" alt="">
+										(<span>{$val.upper}</span>)
+									</a>
+								</li>
+								
+								
+																 <if condition="$val.is_coll eq 1"> 
+   											<li class="position_re">
+												<a class="f_corc1c1c1" >
+													<img src="/Public/images/l_tb_xx.png" alt="" >
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+									<else/>
+											<li class="position_re">
+												<a class="f_corc1c1c1" onclick="return clollection({$val.id})">
+													<img src="/Public/images/l_tb_xx.png" alt="" class="position_ab">
+													<img src="/Public/images/l_tb_xx_.png" alt="">
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+
+								</if>
+								
+							</ul>
+						</div>
+					</li>
+					</volist>
+					
+					
+				</ul>
+				
+				<div style="width:100%;padding:0;" class="b_in_last">
+						<img src="/Public/images/l_tp_xw_1.jpg" alt="" width="671" style="vertical-align:bottom">
+				</div>
+					
+		<!--2  -->	
+		<!--2左  -->
+				<ul class="l_xw_list_d l_xw_list_x l_ul clearfix b_in_r1">
+				<volist name="data_creative" id="val" offset="3" length='3'>
+					<li class="bor_t clearfix">
+					<a href="/common/news/id/{$val.id}"  >
+						<img src="{$val.simg}" alt="" class="l_img">
+						</a>
+						
+						<h3 class="f_18 f_cor000" style="height: 60px;"><a href="/common/news/id/{$val.id}"  class="f_18 f_cor000">{$val.title}</a></h3>
+						<p class="f_12 f_cor999999 clearfix">
+							<span class="left" style="height: 90px;">
+								{$val.introduction|sub_str=65}
+							</span>
+							<a href="/common/news/id/{$val.id}" class="right f_cor6091ce">more></a>
+						</p>
+						<div class="l_fxpl clearfix right">
+							<p class="clearfix left">
+								<span class="l_span_k left f_corfff ">{$val.tag_title|sub_str1=1,1}</span>
+								<span class="left f_core9b55f">{$val.tag_title}</span>
+								<span class="right f_cor999999">{$val.addtime|date="Y-m-d H:i",###}</span>
+							</p>
+							<ul class="l_ul l_ul_cur clearfix right">
+								<li class="position_re">
+									<a href="/common/news/id/{$val.id}" class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_pl.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_pl_.png" alt="">
+										({$val.count})
+									</a>
+								</li>
+								<li class="position_re">
+									<a href="" class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_fh.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_fh_.png" alt="">	
+										({$val.share})
+									</a>
+									<p class="clearfix position_ab">
+										<a href="javascript:void(0);" class="l_wx left bor_l"></a>
+										<a href="javascript:void(0);" class="l_xl left bor_l"></a>
+										<a href="javascript:void(0);" class="l_tx left bor_l"></a>
+									</p>
+								</li>
+								<li class="position_re">
+									<a class="f_corc1c1c1" onclick="return upper('news',{$val.id})">
+										<img src="/Public/images/l_tb_dz.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_dz_.png" alt="">
+										(<span>{$val.upper}</span>)
+									</a>
+								</li>
+								
+								
+																 <if condition="$val.is_coll eq 1"> 
+   											<li class="position_re">
+												<a class="f_corc1c1c1" >
+													<img src="/Public/images/l_tb_xx.png" alt="" >
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+									<else/>
+											<li class="position_re">
+												<a class="f_corc1c1c1" onclick="return clollection({$val.id})">
+													<img src="/Public/images/l_tb_xx.png" alt="" class="position_ab">
+													<img src="/Public/images/l_tb_xx_.png" alt="">
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+
+								</if>
+								
+							</ul>
+						</div>
+					</li>
+					</volist>
+				</ul>
+				
+				
+				<!--  2 右 -->
+				<ul class="l_xw_list_d l_xw_list_x l_ul clearfix b_in_r2">
+				<volist name="data_feelings" id="val" offset="3" length='3'>
+					<li class="bor_t clearfix">
+					<a href="/common/news/id/{$val.id}"  >
+						<img src="{$val.simg}" alt="" class="l_img">
+						</a>
+						
+						<h3 class="f_18 f_cor000" style="height: 60px;"><a href="/common/news/id/{$val.id}"  class="f_18 f_cor000">{$val.title}</a></h3>
+						<p class="f_12 f_cor999999 clearfix">
+							<span class="left" style="height: 90px;">
+							{$val.introduction|sub_str=65}
+							</span>
+							<a href="/common/news/id/{$val.id}" class="right f_cor6091ce">more></a>
+						</p>
+						<div class="l_fxpl clearfix right">
+							<p class="clearfix left">
+								<span class="l_span_k left f_corfff ">{$val.tag_title|sub_str1=1,1}</span>
+								<span class="left f_core9b55f">{$val.tag_title}</span>
+								<span class="right f_cor999999">{$val.addtime|date="Y-m-d H:i",###}</span>
+							</p>
+							<ul class="l_ul l_ul_cur clearfix right">
+								<li class="position_re">
+									<a href="/common/news/id/{$val.id}" class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_pl.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_pl_.png" alt="">
+										({$val.count})
+									</a>
+								</li>
+								<li class="position_re">
+									<a href="" class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_fh.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_fh_.png" alt="">	
+										({$val.share})
+									</a>
+									<p class="clearfix position_ab">
+										<a href="javascript:void(0);" class="l_wx left bor_l"></a>
+										<a href="javascript:void(0);" class="l_xl left bor_l"></a>
+										<a href="javascript:void(0);" class="l_tx left bor_l"></a>
+									</p>
+								</li>
+								<li class="position_re">
+									<a class="f_corc1c1c1" onclick="return upper('news',{$val.id})">
+										<img src="/Public/images/l_tb_dz.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_dz_.png" alt="">
+										(<span>{$val.upper}</span>)
+									</a>
+								</li>
+								
+								
+																 <if condition="$val.is_coll eq 1"> 
+   											<li class="position_re">
+												<a class="f_corc1c1c1" >
+													<img src="/Public/images/l_tb_xx.png" alt="" >
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+									<else/>
+											<li class="position_re">
+												<a class="f_corc1c1c1" onclick="return clollection({$val.id})">
+													<img src="/Public/images/l_tb_xx.png" alt="" class="position_ab">
+													<img src="/Public/images/l_tb_xx_.png" alt="">
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+
+								</if>
+								
+							</ul>
+						</div>
+					</li>
+					</volist>
+					
+					
+				</ul>
+				
+				<div style="width:100%;padding:0;" class="b_in_last">
+						<img src="/Public/images/l_tp_xw_1.jpg" alt="" width="671" style="vertical-align:bottom">
+				</div>
+					
+<!-- 3  -->
+<!--3左  -->
+				<ul class="l_xw_list_d l_xw_list_x l_ul clearfix b_in_r1">
+				<volist name="data_creative" id="val" offset="6" length='3'>
+					<li class="bor_t clearfix">
+					<a href="/common/news/id/{$val.id}"  >
+						<img src="{$val.simg}" alt="" class="l_img">
+						</a>
+						
+						<h3 class="f_18 f_cor000" style="height: 60px;"><a href="/common/news/id/{$val.id}"  class="f_18 f_cor000">{$val.title}</a></h3>
+						<p class="f_12 f_cor999999 clearfix">
+							<span class="left" style="height: 90px;">
+								{$val.introduction|sub_str=65}
+							</span>
+							<a href="/common/news/id/{$val.id}" class="right f_cor6091ce">more></a>
+						</p>
+						<div class="l_fxpl clearfix right">
+							<p class="clearfix left">
+								<span class="l_span_k left f_corfff ">{$val.tag_title|sub_str1=1,1}</span>
+								<span class="left f_core9b55f">{$val.tag_title}</span>
+								<span class="right f_cor999999">{$val.addtime|date="Y-m-d H:i",###}</span>
+							</p>
+							<ul class="l_ul l_ul_cur clearfix right">
+								<li class="position_re">
+									<a href="/common/news/id/{$val.id}" class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_pl.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_pl_.png" alt="">
+										({$val.count})
+									</a>
+								</li>
+								<li class="position_re">
+									<a href="" class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_fh.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_fh_.png" alt="">	
+										({$val.share})
+									</a>
+									<p class="clearfix position_ab">
+										<a href="javascript:void(0);" class="l_wx left bor_l"></a>
+										<a href="javascript:void(0);" class="l_xl left bor_l"></a>
+										<a href="javascript:void(0);" class="l_tx left bor_l"></a>
+									</p>
+								</li>
+								<li class="position_re">
+									<a class="f_corc1c1c1" onclick="return upper('news',{$val.id})">
+										<img src="/Public/images/l_tb_dz.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_dz_.png" alt="">
+										(<span>{$val.upper}</span>)
+									</a>
+								</li>
+								
+								
+																 <if condition="$val.is_coll eq 1"> 
+   											<li class="position_re">
+												<a class="f_corc1c1c1" >
+													<img src="/Public/images/l_tb_xx.png" alt="" >
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+									<else/>
+											<li class="position_re">
+												<a class="f_corc1c1c1" onclick="return clollection({$val.id})">
+													<img src="/Public/images/l_tb_xx.png" alt="" class="position_ab">
+													<img src="/Public/images/l_tb_xx_.png" alt="">
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+
+								</if>
+								
+							</ul>
+						</div>
+					</li>
+					</volist>
+				</ul>
+				
+				
+				<!--  3 右 -->
+				<ul class="l_xw_list_d l_xw_list_x l_ul clearfix b_in_r2">
+				<volist name="data_feelings" id="val" offset="6" length='3'>
+					<li class="bor_t clearfix">
+					<a href="/common/news/id/{$val.id}"  >
+						<img src="{$val.simg}" alt="" class="l_img">
+						</a>
+						
+						<h3 class="f_18 f_cor000" style="height: 60px;"><a href="/common/news/id/{$val.id}"  class="f_18 f_cor000">{$val.title}</a></h3>
+						<p class="f_12 f_cor999999 clearfix">
+							<span class="left" style="height: 90px;">
+								{$val.introduction|sub_str=65}
+							</span>
+							<a href="/common/news/id/{$val.id}" class="right f_cor6091ce">more></a>
+						</p>
+						<div class="l_fxpl clearfix right">
+							<p class="clearfix left">
+								<span class="l_span_k left f_corfff ">{$val.tag_title|sub_str1=1,1}</span>
+								<span class="left f_core9b55f">{$val.tag_title}</span>
+								<span class="right f_cor999999">{$val.addtime|date="Y-m-d H:i",###}</span>
+							</p>
+							<ul class="l_ul l_ul_cur clearfix right">
+								<li class="position_re">
+									<a href="/common/news/id/{$val.id}" class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_pl.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_pl_.png" alt="">
+										({$val.count})
+									</a>
+								</li>
+								<li class="position_re">
+									<a href="" class="f_corc1c1c1">
+										<img src="/Public/images/l_tb_fh.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_fh_.png" alt="">	
+										({$val.share})
+									</a>
+									<p class="clearfix position_ab">
+										<a href="javascript:void(0);" class="l_wx left bor_l"></a>
+										<a href="javascript:void(0);" class="l_xl left bor_l"></a>
+										<a href="javascript:void(0);" class="l_tx left bor_l"></a>
+									</p>
+								</li>
+								<li class="position_re">
+									<a class="f_corc1c1c1" onclick="return upper('news',{$val.id})">
+										<img src="/Public/images/l_tb_dz.png" alt="" class="position_ab">
+										<img src="/Public/images/l_tb_dz_.png" alt="">
+										(<span>{$val.upper}</span>)
+									</a>
+								</li>
+								
+								
+																 <if condition="$val.is_coll eq 1"> 
+   											<li class="position_re">
+												<a class="f_corc1c1c1" >
+													<img src="/Public/images/l_tb_xx.png" alt="" >
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+									<else/>
+											<li class="position_re">
+												<a class="f_corc1c1c1" onclick="return clollection({$val.id})">
+													<img src="/Public/images/l_tb_xx.png" alt="" class="position_ab">
+													<img src="/Public/images/l_tb_xx_.png" alt="">
+													(<span>{$val.clollection}</span>)
+												</a>
+											</li>
+
+								</if>
+								
+							</ul>
+						</div>
+					</li>
+					</volist>
+					
+					
+				</ul>
+				
+			
+				
+
+			</div>
+		</div>
+		<div class="l_zlhz clearfix">
+			<img src="/Public/images/l_tp_zlhz.png" alt="" class="left">
+			<p class="right clearfix l_a_ho_e1b05f">
+			<volist name="link" id="val">
+				<a href="{$val.url}"  target="_blank" class="left bor_l f_14 f_cor000">{$val.title}</a>
+			</volist>
+			</p>
+		</div>
+	</div>
+
+	<!--************************底部*************************-->
+<include file="Common:footer" />
+
+	
+</body>
+</html>
+<script>
+$(function(){
+	$('.l_fxpl ul li.b_index_zan img').each(function(){
+		if($(this).index()==0){
+			$(this).addClass('position_ab');
+		}
+		else{
+			$(this).removeClass('position_ab');
+		}
+	})
+
+	function r1(){
+		var before_i=0;
+for(var i=0;i<$('.b_in_r1 >li').length;i++)
+	if(i>=3)
+		{
+		 if(i!=$('.b_in_r1 >li').length-1)
+			{
+				$('.b_in_r1> li').eq(i).remove().insertBefore($('.b_in_r1> li').eq(before_i));
+				console.log(before_i);
+
+				before_i++;
+			}
+
+		}
+
+
+	}
+	
+})
+
+
+</script>

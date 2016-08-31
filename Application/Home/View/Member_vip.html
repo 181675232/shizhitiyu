@@ -1,0 +1,282 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="/Public/css/css.css">
+    <link rel="stylesheet" href="/Public/css/l_style.css">
+    <link rel="stylesheet" href="/Public/css/b_css.css">
+    <script src="/Public/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="/Public/js/b_js.js" type="text/javascript"></script>
+    	<script type="text/javascript" charset="utf-8" src="/Public/js/scripts/kindeditor/kindeditor.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Public/js/scripts/kindeditor/lang/zh_CN.js"></script>
+	
+		<script>
+			var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('textarea[name="content"]', {
+					resizeType : 1,
+					allowPreviewEmoticons : false,
+					allowImageUpload : false,
+					items : [
+						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+						'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+				});
+			});
+		
+		</script>
+		<style>.ke-container{width:auto !important;}</style>
+</head>
+
+<body>
+    <!-- *****************底部************** -->
+<include file="Common:header" />
+    <!--  -->
+    <div id="b_zx" class="clearfix">
+					<include file="Member:memright" />
+                <!-- *******个人中心右******** -->
+                <div class="b_zx_r right">
+                
+			<include file="Member:top" />
+    
+                                    <!-- 账户设置 -->
+                                    <div class="b_zx_sz">
+                                     <!--  如果不是vip；css中添加 .b_zx_sz_vip_no{display:none;}可隐藏 -->
+                                      <div class="b_zx_sz_vip_no">
+                                          <p>您还不是VIP会员</p>
+                                          <h2>我要升级VIP</h2>
+                                      </div>
+                                  <!--     左导航 -->
+                                      <div class="b_zx_sz_d_d">
+                                          <div class="b_zx_r_tit">
+                                            <p class="color_f font_18">
+                                                账户设置
+                                            </p>
+                                        </div>
+                                        <div class="b_zx_sz_d clearfix">
+                                          <div class="left font_16 color_f b_zx_r_wd_content_l">
+                                             <div class="b_zx_l_line">
+                                                <p></p>
+                                            </div>
+                                            <ul>
+                                               <a href="/Member/account/" style="color:#fff;"><li><span>基本<br>信息</span></li></a> 
+                                             <a href="/Member/vip/" style="color:#fff;"><li class="b_zx_r_tit_ed_r"><span>VIP<br>会员</span></li></a>
+                                     </ul>
+                                 </div>
+
+                       
+          <!-- vip -->
+          <div class="b_zx_sz_r left b_zx_sz_vip">
+             <div class="b_zx_sz_sj clearfix">
+              <a href="vip_quanxian.html" class="b_zx_sz_sj2 right" target="_blank">查看VIP权限</a>
+              <a href="#" class="b_zx_sz_sj1 right">升级VIP</a>
+
+          </div>
+          <table>
+<!--              <tr>
+                 <td class="b_zx_td1">头像</td>
+                 <td class="b_zx_td2"><img src="images/wz_pl_h.png" alt="" width="42px" height="41px"></td>
+                 <td class="b_zx_td3">编辑></td>
+             </tr>
+             <tr class="b_zx_sz_tx">
+                 <td colspan="3" >
+                     <div class="clearfix">
+                        <img src="images/zx_tx_d.png" height="83" width="84" alt="" class="left">
+                        <input type="button" value="上传头像" class="left">
+                        <p class="left">
+                            仅支持JPG、JPEG、GIF、PNG格式的图片文件，文件不能大于2MB
+                        </p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+             <td class="b_zx_td1">基本资料</td>
+             <td class="b_zx_td2"><input type="text" value="老王发飙"  disabled="true"></td>
+             <td class="b_zx_td3">编辑></td>
+         </tr>
+         <tr class="b_zx_zl">
+             <td colspan="3" >
+                 <div>
+                     <div class="clearfix b_zx_zl_d1">
+                       <div class="left b_zx_zl_d_l">
+                           昵称
+                       </div>
+                       <div class="left b_zx_zl_d_r">
+                           老王发飙
+                       </div>
+                   </div>
+                   <div class="clearfix b_zx_zl_d2">
+                       <div class="left b_zx_zl_d_l">
+                           简介
+                       </div>
+                       <div class="left b_zx_zl_d_r">
+                         <textarea name="" id="" cols="30" rows="10"></textarea>
+                     </div>
+                 </div>
+             </div>
+         </td>
+     </tr>
+     修改密码
+     <tr>
+         <td class="b_zx_td1">密码</td>
+         <td class="b_zx_td2"><input type="password" value="111111" disabled="true"></td>
+         <td class="b_zx_td3">编辑></td>
+     </tr>
+     <tr class="b_zx_mm">
+         <td colspan="3" >
+             <div>
+                 <p>
+                     <label for="b_zx_pw1">旧密码</label>
+                     <input type="password" id="b_zx_pw1" class="b_zx_pw">
+                 </p>
+                 <p>
+                     <label for="b_zx_pw2" >新密码</label>
+                     <input type="password" id="b_zx_pw2" class="b_zx_pw">
+                 </p> 
+                 <p>
+                     <label for="b_zx_pw3">确认密码</label>
+                     <input type="password" id="b_zx_pw3" class="b_zx_pw">
+                 </p>
+             </div>
+             <input type="button" value="确认">
+         </td>
+     </tr>
+     邮箱
+     <tr>
+         <td class="b_zx_td1">绑定邮箱</td>
+         <td class="b_zx_td2"><input type="text" value="111111"  disabled="true" class="b_zx_td2_bianji"> </td>
+         <td class="b_zx_td3">编辑></td>
+     </tr>
+     <tr class="b_zx_yx">
+         <td colspan="3" >
+             <div>
+                 <p>
+                    <span>当前邮箱</span>
+                    <span class="b_zx_yx_s2">无</span>
+                </p>
+                <p>
+                    <span>邮箱</span>
+                    <input type="text" placeholder="请输入您的邮箱账号" class="b_zx_yx_s2">
+                </p> 
+                <a href="#">前往邮箱验证</a>
+            </div>
+
+        </td>
+    </tr>
+    手机号
+    <tr>
+     <td class="b_zx_td1">绑定手机号</td>
+     <td class="b_zx_td2"><input type="text" value="111111"  disabled="true"></td>
+     <td class="b_zx_td3">编辑></td>
+ </tr>
+ <tr class="b_zx_sz_edit_sj">
+     <td colspan="3" >
+         <div>
+             <p>
+                 <span>当前手机号</span>
+                 <span class="b_zx_yx_s2">无</span>
+             </p>
+             <p>
+                <span>手机</span>
+                <input type="text" placeholder="请输入您要绑定的手机号" class="b_zx_sz_sj_input">
+                <em class="b_zx_sz_edit_sj_em1">获取验证码</em>
+            </p> 
+            <p>
+                <span>验证码</span>
+                <input type="text" placeholder="请输入验证码" class="b_zx_sz_sj_input">
+                <em class="b_zx_sz_edit_sj_em2">确认绑定</em>
+            </p> 
+        </div>
+
+    </td>
+</tr>
+第三方
+<tr>
+ <td class="b_zx_td1">第三方账号绑定</td>
+ <td class="b_zx_td2">
+     <img src="images/zx_weixin.png" height="20" width="22" alt="">
+     <img src="images/zx_qq.png"  alt="">
+ </td>
+ <td class="b_zx_td3">编辑></td>
+</tr>
+<tr class="b_zx_vip">
+  <td colspan="3">
+      <div class="clearfix">
+          <div class="b_zx_vip_l left">
+              <img src="images/zx_w_d.jpg" height="53" width="58" alt="">
+          </div>
+          <div class="b_zx_vip_r left">
+              <a href="#">绑定微信</a>
+          </div>
+      </div>
+      <div class="clearfix">
+
+          <div class="b_zx_vip_l left">
+              <img src="images/zx_q_d.jpg" height="46" width="46" alt="">
+          </div>
+          <div class="b_zx_vip_r left">
+              <a href="#">绑定QQ</a>
+          </div>
+      </div>
+  </td>
+</tr> -->
+<tr class="b_zx_vip_top_1">
+ <td class="b_zx_td1">vip会员状态</td>
+ <td class="b_zx_td2">年会员（剩余{$viptime}天）</td>
+ <td class=" b_zx_xufei">
+    <a href="/Member/buyvip/"> 续费></a>
+
+ </td>
+</tr>
+</table>
+<div class="b_zx_vip_xufei_d">
+ <div class="b_zx_vip_xufei_d1 clearfix">
+     <div class="left b_zx_vip_xufei_d1_l">
+         <h2>12个月<span>VIP会员</span></h2>
+         <p>￥60元</p>
+     </div>
+     <div class="left b_zx_vip_xufei_d1_r">
+         <p>如续费成功，您的会员权限将由会员到期日次日起计算时间，提前续费不会影响您的利益，请放心使用</p>
+          <form  method="post" action="/Member/buyvip/">
+         <input type="submit" name="submit"  value="确认续费">
+         </form>
+     </div>
+ </div>
+<!--  <div class="b_zx_vip_xufei_d2 clearfix">
+     <input type="text" value="请输入您的手机号" class="left b_zx_vip_xufei_d2_l">
+     <input type="button" value="开通到期短信提醒"  class="left b_zx_vip_xufei_d2_r">
+ </div> 
+ <div class="b_zx_vip_xufei_d3 clearfix">
+    <p>到期短信提醒将于到期日前30天发送，若未续费将自动取消VIP权限</p>
+</div>
+-->
+</div>
+</div>
+<!-- <div class="b_zx_qy_xufei left">
+    <div class="b_zx_vip_xufei_d1 clearfix ">
+     <div class="left b_zx_vip_xufei_d1_l">
+         <h2>12个月<span>企业VIP会员</span></h2>
+         <p>￥60元</p>
+     </div>
+     <div class="left b_zx_vip_xufei_d1_r">
+         <p>如续费成功，您的会员权限将由会员到期日次日起计算时间，提前续费不会影响您的利益，请放心使用</p>
+         <input type="button" value="确认续费">
+     </div>
+ </div>
+</div> -->
+</div>
+</div>
+</div>
+
+<!--  -->
+</div>
+<!-- ************* -->
+</div>
+
+
+<!-- *****************底部************** -->
+<include file="Common:footer" />
+</body>
+</html>
+ 
